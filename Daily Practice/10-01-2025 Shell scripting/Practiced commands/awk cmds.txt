@@ -1,0 +1,75 @@
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ vi awk.lst
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ cat awk.lst
+101 arjun 10000 Developer
+102 anil  22000 Tester
+103 malli 50000 Developer
+104 king  40000 Tester
+105 tom   20000 Developer
+
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ awl '/Developer/{print}' awk.lst
+bash: awl: command not found
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ awk '/Developer/{print}' awk.lst
+101 arjun 10000 Developer
+103 malli 50000 Developer
+105 tom   20000 Developer
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ awk '{print $1 $2 $3}' awk.lst
+101arjun10000
+102anil22000
+103malli50000
+104king40000
+105tom20000
+
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ awk '{print}' awk.lst
+101 arjun 10000 Developer
+102 anil  22000 Tester
+103 malli 50000 Developer
+104 king  40000 Tester
+105 tom   20000 Developer
+
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ awk '/Developer/{print $2,$3}' awk.lst
+arjun 10000
+malli 50000
+tom 20000
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ awk '/Developer/{print $2,$3}' awk.lst
+arjun 10000
+malli 50000
+tom 20000
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ awk '/Developer|Tester/{print $2,$3}' awk.lst
+arjun 10000
+anil 22000
+malli 50000
+king 40000
+tom 20000
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ awk '$1==103 {prinft "%2d,%-20s",NR,$2}' awk.lst
+awk: cmd. line:1: $1==103 {prinft "%2d,%-20s",NR,$2}
+awk: cmd. line:1:                            ^ syntax error
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ awk '$1=="103" {prinft "%2d,%-20s",NR,$2}' awk.lst
+awk: cmd. line:1: $1=="103" {prinft "%2d,%-20s",NR,$2}
+awk: cmd. line:1:                              ^ syntax error
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ awk '$1=="103" {printf "%2d,%-20s",NR,$2}' awk.lst
+ 3,malli
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$

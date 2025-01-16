@@ -1,0 +1,120 @@
+mysql> use nms_db;
+Database changed
+mysql> select * from employees;
++-------+---------+----------+------+-----------+------------+------+
+| empid | empname | salary   | comm | job       | DOJ        | mid  |
++-------+---------+----------+------+-----------+------------+------+
+|   101 | arjun   | 50000.00 | NULL | President | 2020-12-01 | NULL |
+|   102 | Smith   | 45000.00 | NULL | Manager   | 2021-09-23 |  101 |
+|   103 | Ford    | 40000.00 | NULL | Manager   | 2022-04-15 |  101 |
+|   104 | Tom     | 30000.00 | 1500 | Developer | 2023-10-18 |  102 |
+|   105 | Scott   | 35000.00 | 1000 | Developer | 2023-12-25 |  102 |
+|   106 | Jerry   | 25000.00 | 3000 | Tester    | 2025-01-13 |  103 |
+|   107 | Ravi    | 22000.00 | 4000 | Tester    | 2025-01-12 |  103 |
+|   108 | Adam    | 47000.00 | NULL | Analyst   | 2024-01-01 |  101 |
+|   109 | javeed  | 47000.00 | NULL | manager   | 2024-01-01 |  101 |
+|   110 | anil    |     NULL | NULL | NULL      | 2024-01-19 | NULL |
++-------+---------+----------+------+-----------+------------+------+
+10 rows in set (0.00 sec)
+
+mysql> select SUM(salary) as Total_salary from employees;
++--------------+
+| Total_salary |
++--------------+
+|    341000.00 |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> select AVG(salary) from employees;
++--------------+
+| AVG(salary)  |
++--------------+
+| 37888.888889 |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> select count(salary) from employees;
++---------------+
+| count(salary) |
++---------------+
+|             9 |
++---------------+
+1 row in set (0.00 sec)
+
+mysql> select count(comm) from employees;
++-------------+
+| count(comm) |
++-------------+
+|           4 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select MIN(salary) from employees;
++-------------+
+| MIN(salary) |
++-------------+
+|    22000.00 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select MAX(salary) from employees;
++-------------+
+| MAX(salary) |
++-------------+
+|    50000.00 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select MAX(date) from employees;
+ERROR 1054 (42S22): Unknown column 'date' in 'field list'
+mysql> select MAX(doj) from employees;
++------------+
+| MAX(doj)   |
++------------+
+| 2025-01-13 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select MIN(doj) from employees;
++------------+
+| MIN(doj)   |
++------------+
+| 2020-12-01 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select empname,salary+comm from employees;
++---------+-------------+
+| empname | salary+comm |
++---------+-------------+
+| arjun   |        NULL |
+| Smith   |        NULL |
+| Ford    |        NULL |
+| Tom     |    31500.00 |
+| Scott   |    36000.00 |
+| Jerry   |    28000.00 |
+| Ravi    |    26000.00 |
+| Adam    |        NULL |
+| javeed  |        NULL |
+| anil    |        NULL |
++---------+-------------+
+10 rows in set (0.01 sec)
+
+mysql> select empname,salary+IFNULL(comm,0) from employees;
++---------+-----------------------+
+| empname | salary+IFNULL(comm,0) |
++---------+-----------------------+
+| arjun   |              50000.00 |
+| Smith   |              45000.00 |
+| Ford    |              40000.00 |
+| Tom     |              31500.00 |
+| Scott   |              36000.00 |
+| Jerry   |              28000.00 |
+| Ravi    |              26000.00 |
+| Adam    |              47000.00 |
+| javeed  |              47000.00 |
+| anil    |                  NULL |
++---------+-----------------------+
+10 rows in set (0.00 sec)
+
+mysql>

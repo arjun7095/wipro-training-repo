@@ -1,0 +1,163 @@
+mysql> use nms_db;
+Database changed
+mysql> select if(5>2,'5 is greater','2 is greater');
++---------------------------------------+
+| if(5>2,'5 is greater','2 is greater') |
++---------------------------------------+
+| 5 is greater                          |
++---------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select if(5>2,'5 is greater','2 is greater') Result;
++--------------+
+| Result       |
++--------------+
+| 5 is greater |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> select database();
++------------+
+| database() |
++------------+
+| nms_db     |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select BIN(10);
++---------+
+| BIN(10) |
++---------+
+| 1010    |
++---------+
+1 row in set (0.00 sec)
+
+mysql> select USER();
++----------------+
+| USER()         |
++----------------+
+| root@localhost |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select CONVERT('500',UNSIGHNED);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'UNSIGHNED)' at line 1
+mysql> select CONVERT('500',UNSIGNED);
++-------------------------+
+| CONVERT('500',UNSIGNED) |
++-------------------------+
+|                     500 |
++-------------------------+
+1 row in set (0.00 sec)
+
+mysql> select version();
++-----------+
+| version() |
++-----------+
+| 9.1.0     |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> sleep(5);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'sleep(5)' at line 1
+mysql> select sleep(5);
++----------+
+| sleep(5) |
++----------+
+|        0 |
++----------+
+1 row in set (5.01 sec)
+
+mysql> select match("hello world","world");
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '"hello world","world")' at line 1
+mysql> select match("hello world") against ("match");
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '"hello world") against ("match")' at line 1
+mysql> select Lower("ARJUN");
++----------------+
+| Lower("ARJUN") |
++----------------+
+| arjun          |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select upper("arjun");
++----------------+
+| upper("arjun") |
++----------------+
+| ARJUN          |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select LEFT("Arjun",2);
++-----------------+
+| LEFT("Arjun",2) |
++-----------------+
+| Ar              |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql> select RIGHT("Arjun",2);
++------------------+
+| RIGHT("Arjun",2) |
++------------------+
+| un               |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> select space(5);
++----------+
+| space(5) |
++----------+
+|          |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select Locate('o','Hello World');
++---------------------------+
+| Locate('o','Hello World') |
++---------------------------+
+|                         5 |
++---------------------------+
+1 row in set (0.00 sec)
+
+mysql> select insert('Hello World',6,0,'my');
++--------------------------------+
+| insert('Hello World',6,0,'my') |
++--------------------------------+
+| Hellomy World                  |
++--------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select insert('Hello World',7,0,'my');
++--------------------------------+
+| insert('Hello World',7,0,'my') |
++--------------------------------+
+| Hello myWorld                  |
++--------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select field('tom','king,smith,tom');
++-------------------------------+
+| field('tom','king,smith,tom') |
++-------------------------------+
+|                             0 |
++-------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select field('king,smith,tom','tom');
++-------------------------------+
+| field('king,smith,tom','tom') |
++-------------------------------+
+|                             0 |
++-------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select repeat('*',3);
++---------------+
+| repeat('*',3) |
++---------------+
+| ***           |
++---------------+
+1 row in set (0.00 sec)
+
+mysql>

@@ -1,0 +1,418 @@
+mysql> use nms_db
+Database changed
+mysql> show tables;
++------------------+
+| Tables_in_nms_db |
++------------------+
+| employees        |
++------------------+
+1 row in set (0.01 sec)
+
+mysql> desc employees;
++---------+--------------+------+-----+---------+-------+
+| Field   | Type         | Null | Key | Default | Extra |
++---------+--------------+------+-----+---------+-------+
+| empid   | int          | NO   | PRI | NULL    |       |
+| empname | varchar(20)  | YES  |     | NULL    |       |
+| salary  | double(7,2)  | YES  |     | NULL    |       |
+| comm    | decimal(7,0) | YES  |     | NULL    |       |
+| job     | varchar(30)  | YES  |     | NULL    |       |
+| DOJ     | date         | YES  |     | NULL    |       |
+| mid     | int          | YES  |     | NULL    |       |
++---------+--------------+------+-----+---------+-------+
+7 rows in set (0.00 sec)
+
+mysql> select * from employees;
++-------+---------+----------+------+-----------+------------+------+
+| empid | empname | salary   | comm | job       | DOJ        | mid  |
++-------+---------+----------+------+-----------+------------+------+
+|   101 | arjun   | 50000.00 | NULL | President | 2020-12-01 | NULL |
+|   103 | Ford    | 40000.00 | NULL | Manager   | 2022-04-15 |  101 |
+|   104 | Tom     | 30000.00 | 1500 | Developer | 2023-10-18 |  102 |
+|   105 | Scott   | 35000.00 | 1000 | Developer | 2023-12-25 |  102 |
+|   106 | Jerry   | 25000.00 | 3000 | Tester    | 2025-01-13 |  103 |
+|   107 | Ravi    | 22000.00 | 4000 | Tester    | 2025-01-12 |  103 |
+|   108 | Adam    | 47000.00 | NULL | Analyst   | 2024-01-01 |  101 |
+|   109 | javeed  | 47000.00 | NULL | manager   | 2024-01-01 |  101 |
+|   110 | anil    |     NULL | NULL | NULL      | 2024-01-19 | NULL |
++-------+---------+----------+------+-----------+------------+------+
+9 rows in set (0.00 sec)
+
+mysql> select empid as Emp_Id, empname as Name from employees;
++--------+--------+
+| Emp_Id | Name   |
++--------+--------+
+|    101 | arjun  |
+|    103 | Ford   |
+|    104 | Tom    |
+|    105 | Scott  |
+|    106 | Jerry  |
+|    107 | Ravi   |
+|    108 | Adam   |
+|    109 | javeed |
+|    110 | anil   |
++--------+--------+
+9 rows in set (0.00 sec)
+
+mysql> select * from employees where job="Developer";
++-------+---------+----------+------+-----------+------------+------+
+| empid | empname | salary   | comm | job       | DOJ        | mid  |
++-------+---------+----------+------+-----------+------------+------+
+|   104 | Tom     | 30000.00 | 1500 | Developer | 2023-10-18 |  102 |
+|   105 | Scott   | 35000.00 | 1000 | Developer | 2023-12-25 |  102 |
++-------+---------+----------+------+-----------+------------+------+
+2 rows in set (0.00 sec)
+
+mysql> select * from employees where job="Developer" or job="Tester";
+
++-------+---------+----------+------+-----------+------------+------+
+| empid | empname | salary   | comm | job       | DOJ        | mid  |
++-------+---------+----------+------+-----------+------------+------+
+|   104 | Tom     | 30000.00 | 1500 | Developer | 2023-10-18 |  102 |
+|   105 | Scott   | 35000.00 | 1000 | Developer | 2023-12-25 |  102 |
+|   106 | Jerry   | 25000.00 | 3000 | Tester    | 2025-01-13 |  103 |
+|   107 | Ravi    | 22000.00 | 4000 | Tester    | 2025-01-12 |  103 |
++-------+---------+----------+------+-----------+------------+------+
+4 rows in set (0.00 sec)
+
+mysql> select * from employees where salary=50000;
++-------+---------+----------+------+-----------+------------+------+
+| empid | empname | salary   | comm | job       | DOJ        | mid  |
++-------+---------+----------+------+-----------+------------+------+
+|   101 | arjun   | 50000.00 | NULL | President | 2020-12-01 | NULL |
++-------+---------+----------+------+-----------+------------+------+
+1 row in set (0.00 sec)
+
+mysql> select * from employees where salary<50000;
++-------+---------+----------+------+-----------+------------+------+
+| empid | empname | salary   | comm | job       | DOJ        | mid  |
++-------+---------+----------+------+-----------+------------+------+
+|   103 | Ford    | 40000.00 | NULL | Manager   | 2022-04-15 |  101 |
+|   104 | Tom     | 30000.00 | 1500 | Developer | 2023-10-18 |  102 |
+|   105 | Scott   | 35000.00 | 1000 | Developer | 2023-12-25 |  102 |
+|   106 | Jerry   | 25000.00 | 3000 | Tester    | 2025-01-13 |  103 |
+|   107 | Ravi    | 22000.00 | 4000 | Tester    | 2025-01-12 |  103 |
+|   108 | Adam    | 47000.00 | NULL | Analyst   | 2024-01-01 |  101 |
+|   109 | javeed  | 47000.00 | NULL | manager   | 2024-01-01 |  101 |
++-------+---------+----------+------+-----------+------------+------+
+7 rows in set (0.00 sec)
+
+mysql> select * from employees where salary>50000;
+Empty set (0.00 sec)
+
+mysql> select * from employees where salary>=50000;
++-------+---------+----------+------+-----------+------------+------+
+| empid | empname | salary   | comm | job       | DOJ        | mid  |
++-------+---------+----------+------+-----------+------------+------+
+|   101 | arjun   | 50000.00 | NULL | President | 2020-12-01 | NULL |
++-------+---------+----------+------+-----------+------------+------+
+1 row in set (0.00 sec)
+
+mysql> select * from employees where salary<=50000;
++-------+---------+----------+------+-----------+------------+------+
+| empid | empname | salary   | comm | job       | DOJ        | mid  |
++-------+---------+----------+------+-----------+------------+------+
+|   101 | arjun   | 50000.00 | NULL | President | 2020-12-01 | NULL |
+|   103 | Ford    | 40000.00 | NULL | Manager   | 2022-04-15 |  101 |
+|   104 | Tom     | 30000.00 | 1500 | Developer | 2023-10-18 |  102 |
+|   105 | Scott   | 35000.00 | 1000 | Developer | 2023-12-25 |  102 |
+|   106 | Jerry   | 25000.00 | 3000 | Tester    | 2025-01-13 |  103 |
+|   107 | Ravi    | 22000.00 | 4000 | Tester    | 2025-01-12 |  103 |
+|   108 | Adam    | 47000.00 | NULL | Analyst   | 2024-01-01 |  101 |
+|   109 | javeed  | 47000.00 | NULL | manager   | 2024-01-01 |  101 |
++-------+---------+----------+------+-----------+------------+------+
+8 rows in set (0.00 sec)
+
+mysql> select * from employees where salary!=50000;
++-------+---------+----------+------+-----------+------------+------+
+| empid | empname | salary   | comm | job       | DOJ        | mid  |
++-------+---------+----------+------+-----------+------------+------+
+|   103 | Ford    | 40000.00 | NULL | Manager   | 2022-04-15 |  101 |
+|   104 | Tom     | 30000.00 | 1500 | Developer | 2023-10-18 |  102 |
+|   105 | Scott   | 35000.00 | 1000 | Developer | 2023-12-25 |  102 |
+|   106 | Jerry   | 25000.00 | 3000 | Tester    | 2025-01-13 |  103 |
+|   107 | Ravi    | 22000.00 | 4000 | Tester    | 2025-01-12 |  103 |
+|   108 | Adam    | 47000.00 | NULL | Analyst   | 2024-01-01 |  101 |
+|   109 | javeed  | 47000.00 | NULL | manager   | 2024-01-01 |  101 |
++-------+---------+----------+------+-----------+------------+------+
+7 rows in set (0.00 sec)
+
+mysql> select * from employees where salary<>50000;
++-------+---------+----------+------+-----------+------------+------+
+| empid | empname | salary   | comm | job       | DOJ        | mid  |
++-------+---------+----------+------+-----------+------------+------+
+|   103 | Ford    | 40000.00 | NULL | Manager   | 2022-04-15 |  101 |
+|   104 | Tom     | 30000.00 | 1500 | Developer | 2023-10-18 |  102 |
+|   105 | Scott   | 35000.00 | 1000 | Developer | 2023-12-25 |  102 |
+|   106 | Jerry   | 25000.00 | 3000 | Tester    | 2025-01-13 |  103 |
+|   107 | Ravi    | 22000.00 | 4000 | Tester    | 2025-01-12 |  103 |
+|   108 | Adam    | 47000.00 | NULL | Analyst   | 2024-01-01 |  101 |
+|   109 | javeed  | 47000.00 | NULL | manager   | 2024-01-01 |  101 |
++-------+---------+----------+------+-----------+------------+------+
+7 rows in set (0.00 sec)
+
+mysql> select * from employees where salary=30000 or salary=50000;
++-------+---------+----------+------+-----------+------------+------+
+| empid | empname | salary   | comm | job       | DOJ        | mid  |
++-------+---------+----------+------+-----------+------------+------+
+|   101 | arjun   | 50000.00 | NULL | President | 2020-12-01 | NULL |
+|   104 | Tom     | 30000.00 | 1500 | Developer | 2023-10-18 |  102 |
++-------+---------+----------+------+-----------+------------+------+
+2 rows in set (0.00 sec)
+
+mysql> select * from employees where salary IN(30000,50000);
++-------+---------+----------+------+-----------+------------+------+
+| empid | empname | salary   | comm | job       | DOJ        | mid  |
++-------+---------+----------+------+-----------+------------+------+
+|   101 | arjun   | 50000.00 | NULL | President | 2020-12-01 | NULL |
+|   104 | Tom     | 30000.00 | 1500 | Developer | 2023-10-18 |  102 |
++-------+---------+----------+------+-----------+------------+------+
+2 rows in set (0.00 sec)
+
+mysql> insert into employees values(102,"Smith",45000,null,"Manager",
+"2021-09-23",101);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from employees where salary=30000 and salary=50000;
+Empty set (0.00 sec)
+
+mysql> select * from employees where salary=30000 and comm>=1000;
++-------+---------+----------+------+-----------+------------+------+
+| empid | empname | salary   | comm | job       | DOJ        | mid  |
++-------+---------+----------+------+-----------+------------+------+
+|   104 | Tom     | 30000.00 | 1500 | Developer | 2023-10-18 |  102 |
++-------+---------+----------+------+-----------+------------+------+
+1 row in set (0.00 sec)
+
+mysql> select * from employees where salary NOT IN(30000,50000);
++-------+---------+----------+------+-----------+------------+------+
+| empid | empname | salary   | comm | job       | DOJ        | mid  |
++-------+---------+----------+------+-----------+------------+------+
+|   102 | Smith   | 45000.00 | NULL | Manager   | 2021-09-23 |  101 |
+|   103 | Ford    | 40000.00 | NULL | Manager   | 2022-04-15 |  101 |
+|   105 | Scott   | 35000.00 | 1000 | Developer | 2023-12-25 |  102 |
+|   106 | Jerry   | 25000.00 | 3000 | Tester    | 2025-01-13 |  103 |
+|   107 | Ravi    | 22000.00 | 4000 | Tester    | 2025-01-12 |  103 |
+|   108 | Adam    | 47000.00 | NULL | Analyst   | 2024-01-01 |  101 |
+|   109 | javeed  | 47000.00 | NULL | manager   | 2024-01-01 |  101 |
++-------+---------+----------+------+-----------+------------+------+
+7 rows in set (0.00 sec)
+
+mysql> select * from employees where salary BETWEEN 30000 and 50000;
++-------+---------+----------+------+-----------+------------+------+
+| empid | empname | salary   | comm | job       | DOJ        | mid  |
++-------+---------+----------+------+-----------+------------+------+
+|   101 | arjun   | 50000.00 | NULL | President | 2020-12-01 | NULL |
+|   102 | Smith   | 45000.00 | NULL | Manager   | 2021-09-23 |  101 |
+|   103 | Ford    | 40000.00 | NULL | Manager   | 2022-04-15 |  101 |
+|   104 | Tom     | 30000.00 | 1500 | Developer | 2023-10-18 |  102 |
+|   105 | Scott   | 35000.00 | 1000 | Developer | 2023-12-25 |  102 |
+|   108 | Adam    | 47000.00 | NULL | Analyst   | 2024-01-01 |  101 |
+|   109 | javeed  | 47000.00 | NULL | manager   | 2024-01-01 |  101 |
++-------+---------+----------+------+-----------+------------+------+
+7 rows in set (0.00 sec)
+
+mysql> select * from employees where salary Not BETWEEN 30000 and 500
+00;
++-------+---------+----------+------+--------+------------+------+
+| empid | empname | salary   | comm | job    | DOJ        | mid  |
++-------+---------+----------+------+--------+------------+------+
+|   106 | Jerry   | 25000.00 | 3000 | Tester | 2025-01-13 |  103 |
+|   107 | Ravi    | 22000.00 | 4000 | Tester | 2025-01-12 |  103 |
++-------+---------+----------+------+--------+------------+------+
+2 rows in set (0.00 sec)
+
+mysql> select * from employees where comm=null;
+Empty set (0.00 sec)
+
+mysql> select * from employees where comm IS null;
++-------+---------+----------+------+-----------+------------+------+
+| empid | empname | salary   | comm | job       | DOJ        | mid  |
++-------+---------+----------+------+-----------+------------+------+
+|   101 | arjun   | 50000.00 | NULL | President | 2020-12-01 | NULL |
+|   102 | Smith   | 45000.00 | NULL | Manager   | 2021-09-23 |  101 |
+|   103 | Ford    | 40000.00 | NULL | Manager   | 2022-04-15 |  101 |
+|   108 | Adam    | 47000.00 | NULL | Analyst   | 2024-01-01 |  101 |
+|   109 | javeed  | 47000.00 | NULL | manager   | 2024-01-01 |  101 |
+|   110 | anil    |     NULL | NULL | NULL      | 2024-01-19 | NULL |
++-------+---------+----------+------+-----------+------------+------+
+6 rows in set (0.00 sec)
+
+mysql> select * from employees where comm IS NOT null;
++-------+---------+----------+------+-----------+------------+------+
+| empid | empname | salary   | comm | job       | DOJ        | mid  |
++-------+---------+----------+------+-----------+------------+------+
+|   104 | Tom     | 30000.00 | 1500 | Developer | 2023-10-18 |  102 |
+|   105 | Scott   | 35000.00 | 1000 | Developer | 2023-12-25 |  102 |
+|   106 | Jerry   | 25000.00 | 3000 | Tester    | 2025-01-13 |  103 |
+|   107 | Ravi    | 22000.00 | 4000 | Tester    | 2025-01-12 |  103 |
++-------+---------+----------+------+-----------+------------+------+
+4 rows in set (0.00 sec)
+
+mysql> select * from employees where empname='king';
+Empty set (0.00 sec)
+
+mysql> select * from employees where empname='King';
+Empty set (0.00 sec)
+
+mysql> select * from employees where empname='arjun';
++-------+---------+----------+------+-----------+------------+------+
+| empid | empname | salary   | comm | job       | DOJ        | mid  |
++-------+---------+----------+------+-----------+------------+------+
+|   101 | arjun   | 50000.00 | NULL | President | 2020-12-01 | NULL |
++-------+---------+----------+------+-----------+------------+------+
+1 row in set (0.00 sec)
+
+mysql> select * from employees where empname='a%';
+Empty set (0.00 sec)
+
+mysql> select * from employees where empname LIKE 'a%';
++-------+---------+----------+------+-----------+------------+------+
+| empid | empname | salary   | comm | job       | DOJ        | mid  |
++-------+---------+----------+------+-----------+------------+------+
+|   101 | arjun   | 50000.00 | NULL | President | 2020-12-01 | NULL |
+|   108 | Adam    | 47000.00 | NULL | Analyst   | 2024-01-01 |  101 |
+|   110 | anil    |     NULL | NULL | NULL      | 2024-01-19 | NULL |
++-------+---------+----------+------+-----------+------------+------+
+3 rows in set (0.00 sec)
+
+mysql> select * from employees where empname LIKE 's%';
++-------+---------+----------+------+-----------+------------+------+
+| empid | empname | salary   | comm | job       | DOJ        | mid  |
++-------+---------+----------+------+-----------+------------+------+
+|   102 | Smith   | 45000.00 | NULL | Manager   | 2021-09-23 |  101 |
+|   105 | Scott   | 35000.00 | 1000 | Developer | 2023-12-25 |  102 |
++-------+---------+----------+------+-----------+------------+------+
+2 rows in set (0.00 sec)
+
+mysql> select * from employees where empname LIKE '%d';
++-------+---------+----------+------+---------+------------+------+
+| empid | empname | salary   | comm | job     | DOJ        | mid  |
++-------+---------+----------+------+---------+------------+------+
+|   103 | Ford    | 40000.00 | NULL | Manager | 2022-04-15 |  101 |
+|   109 | javeed  | 47000.00 | NULL | manager | 2024-01-01 |  101 |
++-------+---------+----------+------+---------+------------+------+
+2 rows in set (0.00 sec)
+
+mysql> select * from employees where empname LIKE 't_m';
++-------+---------+----------+------+-----------+------------+------+
+| empid | empname | salary   | comm | job       | DOJ        | mid  |
++-------+---------+----------+------+-----------+------------+------+
+|   104 | Tom     | 30000.00 | 1500 | Developer | 2023-10-18 |  102 |
++-------+---------+----------+------+-----------+------------+------+
+1 row in set (0.00 sec)
+
+mysql> select * from employees where empname LIKE 'f__d';
++-------+---------+----------+------+---------+------------+------+
+| empid | empname | salary   | comm | job     | DOJ        | mid  |
++-------+---------+----------+------+---------+------------+------+
+|   103 | Ford    | 40000.00 | NULL | Manager | 2022-04-15 |  101 |
++-------+---------+----------+------+---------+------------+------+
+1 row in set (0.00 sec)
+
+mysql> select * from employees where empid LIKE '10_';
++-------+---------+----------+------+-----------+------------+------+
+| empid | empname | salary   | comm | job       | DOJ        | mid  |
++-------+---------+----------+------+-----------+------------+------+
+|   101 | arjun   | 50000.00 | NULL | President | 2020-12-01 | NULL |
+|   102 | Smith   | 45000.00 | NULL | Manager   | 2021-09-23 |  101 |
+|   103 | Ford    | 40000.00 | NULL | Manager   | 2022-04-15 |  101 |
+|   104 | Tom     | 30000.00 | 1500 | Developer | 2023-10-18 |  102 |
+|   105 | Scott   | 35000.00 | 1000 | Developer | 2023-12-25 |  102 |
+|   106 | Jerry   | 25000.00 | 3000 | Tester    | 2025-01-13 |  103 |
+|   107 | Ravi    | 22000.00 | 4000 | Tester    | 2025-01-12 |  103 |
+|   108 | Adam    | 47000.00 | NULL | Analyst   | 2024-01-01 |  101 |
+|   109 | javeed  | 47000.00 | NULL | manager   | 2024-01-01 |  101 |
++-------+---------+----------+------+-----------+------------+------+
+9 rows in set (0.00 sec)
+
+mysql> select * from employees where doj LIKE '%-12-%';
++-------+---------+----------+------+-----------+------------+------+
+| empid | empname | salary   | comm | job       | DOJ        | mid  |
++-------+---------+----------+------+-----------+------------+------+
+|   101 | arjun   | 50000.00 | NULL | President | 2020-12-01 | NULL |
+|   105 | Scott   | 35000.00 | 1000 | Developer | 2023-12-25 |  102 |
++-------+---------+----------+------+-----------+------------+------+
+2 rows in set (0.00 sec)
+
+mysql> select current_date from DUAL;
++--------------+
+| current_date |
++--------------+
+| 2025-01-15   |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> select concat('Hello','Friends') as text from DUAL;
++--------------+
+| text         |
++--------------+
+| HelloFriends |
++--------------+
+1 row in set (0.01 sec)
+
+mysql> select concat('Mr. ',empname) as name from employees;
++------------+
+| name       |
++------------+
+| Mr. arjun  |
+| Mr. Smith  |
+| Mr. Ford   |
+| Mr. Tom    |
+| Mr. Scott  |
+| Mr. Jerry  |
+| Mr. Ravi   |
+| Mr. Adam   |
+| Mr. javeed |
+| Mr. anil   |
++------------+
+10 rows in set (0.00 sec)
+
+mysql> select distinct job from employees;
++-----------+
+| job       |
++-----------+
+| President |
+| Manager   |
+| Developer |
+| Tester    |
+| Analyst   |
+| NULL      |
++-----------+
+6 rows in set (0.00 sec)
+
+mysql> select * from employees order by empname ASC;
++-------+---------+----------+------+-----------+------------+------+
+| empid | empname | salary   | comm | job       | DOJ        | mid  |
++-------+---------+----------+------+-----------+------------+------+
+|   108 | Adam    | 47000.00 | NULL | Analyst   | 2024-01-01 |  101 |
+|   110 | anil    |     NULL | NULL | NULL      | 2024-01-19 | NULL |
+|   101 | arjun   | 50000.00 | NULL | President | 2020-12-01 | NULL |
+|   103 | Ford    | 40000.00 | NULL | Manager   | 2022-04-15 |  101 |
+|   109 | javeed  | 47000.00 | NULL | manager   | 2024-01-01 |  101 |
+|   106 | Jerry   | 25000.00 | 3000 | Tester    | 2025-01-13 |  103 |
+|   107 | Ravi    | 22000.00 | 4000 | Tester    | 2025-01-12 |  103 |
+|   105 | Scott   | 35000.00 | 1000 | Developer | 2023-12-25 |  102 |
+|   102 | Smith   | 45000.00 | NULL | Manager   | 2021-09-23 |  101 |
+|   104 | Tom     | 30000.00 | 1500 | Developer | 2023-10-18 |  102 |
++-------+---------+----------+------+-----------+------------+------+
+10 rows in set (0.00 sec)
+
+mysql> select * from employees order by empname DESC;
++-------+---------+----------+------+-----------+------------+------+
+| empid | empname | salary   | comm | job       | DOJ        | mid  |
++-------+---------+----------+------+-----------+------------+------+
+|   104 | Tom     | 30000.00 | 1500 | Developer | 2023-10-18 |  102 |
+|   102 | Smith   | 45000.00 | NULL | Manager   | 2021-09-23 |  101 |
+|   105 | Scott   | 35000.00 | 1000 | Developer | 2023-12-25 |  102 |
+|   107 | Ravi    | 22000.00 | 4000 | Tester    | 2025-01-12 |  103 |
+|   106 | Jerry   | 25000.00 | 3000 | Tester    | 2025-01-13 |  103 |
+|   109 | javeed  | 47000.00 | NULL | manager   | 2024-01-01 |  101 |
+|   103 | Ford    | 40000.00 | NULL | Manager   | 2022-04-15 |  101 |
+|   101 | arjun   | 50000.00 | NULL | President | 2020-12-01 | NULL |
+|   110 | anil    |     NULL | NULL | NULL      | 2024-01-19 | NULL |
+|   108 | Adam    | 47000.00 | NULL | Analyst   | 2024-01-01 |  101 |
++-------+---------+----------+------+-----------+------------+------+
+10 rows in set (0.00 sec)
+
+mysql>

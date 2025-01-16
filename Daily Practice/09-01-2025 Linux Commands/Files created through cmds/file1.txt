@@ -1,0 +1,3 @@
+This command will help to update the whole content with new content
+
+to append the new data we use  >>

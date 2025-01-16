@@ -1,0 +1,151 @@
+mysql> use nms_db;
+Database changed
+mysql> CREATE TABLE Products (pid integer(3),pname varchar(20),price decimal(7,2));
+Query OK, 0 rows affected, 1 warning (0.02 sec)
+
+mysql> desc products;
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| pid   | int          | YES  |     | NULL    |       |
+| pname | varchar(20)  | YES  |     | NULL    |       |
+| price | decimal(7,2) | YES  |     | NULL    |       |
++-------+--------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> alter table products add (dop date,brand varchar(20));
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc products;
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| pid   | int          | YES  |     | NULL    |       |
+| pname | varchar(20)  | YES  |     | NULL    |       |
+| price | decimal(7,2) | YES  |     | NULL    |       |
+| dop   | date         | YES  |     | NULL    |       |
+| brand | varchar(20)  | YES  |     | NULL    |       |
++-------+--------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> alter table products add constraint products_pid_pk PRIMARY KEY(pid);
+
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc products;
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| pid   | int          | NO   | PRI | NULL    |       |
+| pname | varchar(20)  | YES  |     | NULL    |       |
+| price | decimal(7,2) | YES  |     | NULL    |       |
+| dop   | date         | YES  |     | NULL    |       |
+| brand | varchar(20)  | YES  |     | NULL    |       |
++-------+--------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> alter table products modify pname varchar(30);
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc products;
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| pid   | int          | NO   | PRI | NULL    |       |
+| pname | varchar(30)  | YES  |     | NULL    |       |
+| price | decimal(7,2) | YES  |     | NULL    |       |
+| dop   | date         | YES  |     | NULL    |       |
+| brand | varchar(20)  | YES  |     | NULL    |       |
++-------+--------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> alter table products drop column brand;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc products;
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| pid   | int          | NO   | PRI | NULL    |       |
+| pname | varchar(30)  | YES  |     | NULL    |       |
+| price | decimal(7,2) | YES  |     | NULL    |       |
+| dop   | date         | YES  |     | NULL    |       |
++-------+--------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> alter table products drop constraint products_pid_pk;
+ERROR 3940 (HY000): Constraint 'products_pid_pk' does not exist.
+mysql> alter table products drop PRIMARY KEY;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc products;
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| pid   | int          | NO   |     | NULL    |       |
+| pname | varchar(30)  | YES  |     | NULL    |       |
+| price | decimal(7,2) | YES  |     | NULL    |       |
+| dop   | date         | YES  |     | NULL    |       |
++-------+--------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> alter table products add constraint products_pid_pk PRIMARY KEY(pid);
+
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc products;
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| pid   | int          | NO   | PRI | NULL    |       |
+| pname | varchar(30)  | YES  |     | NULL    |       |
+| price | decimal(7,2) | YES  |     | NULL    |       |
+| dop   | date         | YES  |     | NULL    |       |
++-------+--------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> alter table products RENAME products_info;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> desc products;
+ERROR 1146 (42S02): Table 'nms_db.products' doesn't exist
+mysql> desc products_info;
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| pid   | int          | NO   | PRI | NULL    |       |
+| pname | varchar(30)  | YES  |     | NULL    |       |
+| price | decimal(7,2) | YES  |     | NULL    |       |
+| dop   | date         | YES  |     | NULL    |       |
++-------+--------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> alter table products_info RENAME column pnam to product_name;
+ERROR 1054 (42S22): Unknown column 'pnam' in 'products_info'
+mysql> alter table products_info RENAME column pname to product_name;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc products_info;
++--------------+--------------+------+-----+---------+-------+
+| Field        | Type         | Null | Key | Default | Extra |
++--------------+--------------+------+-----+---------+-------+
+| pid          | int          | NO   | PRI | NULL    |       |
+| product_name | varchar(30)  | YES  |     | NULL    |       |
+| price        | decimal(7,2) | YES  |     | NULL    |       |
+| dop          | date         | YES  |     | NULL    |       |
++--------------+--------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> TRUNCATE products_info;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> drop products_info;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'products_info' at line 1
+mysql> drop table products_info;

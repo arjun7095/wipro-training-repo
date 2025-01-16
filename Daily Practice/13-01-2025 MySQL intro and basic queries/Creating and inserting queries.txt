@@ -1,0 +1,112 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mydb               |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+7 rows in set (0.03 sec)
+
+mysql> CREATE database nms_db;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mydb               |
+| mysql              |
+| nms_db             |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+8 rows in set (0.00 sec)
+
+mysql> use nms_db;
+Database changed
+mysql> show tables;
+Empty set (0.01 sec)
+
+mysql> create table employees(
+    -> empid int(3) PRIMARY KEY,
+    -> empname varchar(20),
+    -> salary double(7,2),
+    -> comm decimal(7),
+    -> job varchar(30),
+    -> DOJ date,
+    -> mid int(3)
+    -> );
+Query OK, 0 rows affected, 3 warnings (0.02 sec)
+
+mysql> desc employees;
++---------+--------------+------+-----+---------+-------+
+| Field   | Type         | Null | Key | Default | Extra |
++---------+--------------+------+-----+---------+-------+
+| empid   | int          | NO   | PRI | NULL    |       |
+| empname | varchar(20)  | YES  |     | NULL    |       |
+| salary  | double(7,2)  | YES  |     | NULL    |       |
+| comm    | decimal(7,0) | YES  |     | NULL    |       |
+| job     | varchar(30)  | YES  |     | NULL    |       |
+| DOJ     | date         | YES  |     | NULL    |       |
+| mid     | int          | YES  |     | NULL    |       |
++---------+--------------+------+-----+---------+-------+
+7 rows in set (0.01 sec)
+
+mysql> INSERT INTO EMPLOYEES values(101,'arjun',50000,null,'President','2020-
+12-01',null);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO  Employee values(103,'Ford',40000,null,'Manager','2022-04-15',101);
+ERROR 1146 (42S02): Table 'nms_db.employee' doesn't exist
+mysql> INSERT INTO  Employees values(103,'Ford',40000,null,'Manager','2022-04
+-15',101);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO  Employees values(103,'Ford',40000,null,'Manager','2022-04
+-15',101);
+ERROR 1062 (23000): Duplicate entry '103' for key 'employees.PRIMARY'
+mysql> INSERT INTO  Employees values(104,'Tom',30000,1500,'Developer','2023-10-18',102);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO  Employees values(105,'Scott',35000,1000,'Developer','2023
+-12-25',102);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO  Employees values(106,'Jerry',25000,3000,'Tester',current_date,103);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO  Employees values(107,'Ravi',22000,4000,'Tester',current_date-1,103);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO  Employees values(108,'Adam',47000,null,'Analyst','2024-01-01',101) ,                                                     (109,'javeed',47000,null,'manager','2024-01-01',101) ;
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> INSERT INTO Employees(empid,empname,DOJ)   values(110,'anil','2024-01-19');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from employees;
++-------+---------+----------+------+-----------+------------+------+
+| empid | empname | salary   | comm | job       | DOJ        | mid  |
++-------+---------+----------+------+-----------+------------+------+
+|   101 | arjun   | 50000.00 | NULL | President | 2020-12-01 | NULL |
+|   103 | Ford    | 40000.00 | NULL | Manager   | 2022-04-15 |  101 |
+|   104 | Tom     | 30000.00 | 1500 | Developer | 2023-10-18 |  102 |
+|   105 | Scott   | 35000.00 | 1000 | Developer | 2023-12-25 |  102 |
+|   106 | Jerry   | 25000.00 | 3000 | Tester    | 2025-01-13 |  103 |
+|   107 | Ravi    | 22000.00 | 4000 | Tester    | 2025-01-12 |  103 |
+|   108 | Adam    | 47000.00 | NULL | Analyst   | 2024-01-01 |  101 |
+|   109 | javeed  | 47000.00 | NULL | manager   | 2024-01-01 |  101 |
+|   110 | anil    |     NULL | NULL | NULL      | 2024-01-19 | NULL |
++-------+---------+----------+------+-----------+------------+------+
+9 rows in set (0.00 sec)
+
+mysql>

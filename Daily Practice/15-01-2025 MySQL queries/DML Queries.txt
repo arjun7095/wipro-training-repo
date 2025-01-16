@@ -1,0 +1,132 @@
+mysql> desc products_info;
+ERROR 1046 (3D000): No database selected
+mysql> use nms_db
+Database changed
+mysql> desc products_info;
++--------------+--------------+------+-----+---------+-------+
+| Field        | Type         | Null | Key | Default | Extra |
++--------------+--------------+------+-----+---------+-------+
+| pid          | int          | NO   | PRI | NULL    |       |
+| product_name | varchar(30)  | YES  |     | NULL    |       |
+| price        | decimal(7,2) | YES  |     | NULL    |       |
+| dop          | date         | YES  |     | NULL    |       |
++--------------+--------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> rename products_info to products;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'products_info to products' at line 1
+mysql> rename table products_info to products;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> desc products;
++--------------+--------------+------+-----+---------+-------+
+| Field        | Type         | Null | Key | Default | Extra |
++--------------+--------------+------+-----+---------+-------+
+| pid          | int          | NO   | PRI | NULL    |       |
+| product_name | varchar(30)  | YES  |     | NULL    |       |
+| price        | decimal(7,2) | YES  |     | NULL    |       |
+| dop          | date         | YES  |     | NULL    |       |
++--------------+--------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> alter table products add column brand varchar(20);
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc products;
++--------------+--------------+------+-----+---------+-------+
+| Field        | Type         | Null | Key | Default | Extra |
++--------------+--------------+------+-----+---------+-------+
+| pid          | int          | NO   | PRI | NULL    |       |
+| product_name | varchar(30)  | YES  |     | NULL    |       |
+| price        | decimal(7,2) | YES  |     | NULL    |       |
+| dop          | date         | YES  |     | NULL    |       |
+| brand        | varchar(20)  | YES  |     | NULL    |       |
++--------------+--------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> INSERT INTO Products values(1,'mobile',15000,current_date,'IPhone');
+Query OK, 1 row affected (0.01 sec)
+
+mysql>
+mysql> INSERT INTO Products values(2,'laptop',25000,current_date,'Dell') , (3,'Books',1200,current_date,'BlackBook') , (4,'Toys',1500,current_date,'KidsZee');
+Query OK, 3 rows affected (0.00 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql>
+mysql> INSERT INTO Products values(1,'mobile',15000,current_date,'IPhone');
+ERROR 1062 (23000): Duplicate entry '1' for key 'products.PRIMARY'
+mysql> select * from products;
++-----+--------------+----------+------------+-----------+
+| pid | product_name | price    | dop        | brand     |
++-----+--------------+----------+------------+-----------+
+|   1 | mobile       | 15000.00 | 2025-01-15 | IPhone    |
+|   2 | laptop       | 25000.00 | 2025-01-15 | Dell      |
+|   3 | Books        |  1200.00 | 2025-01-15 | BlackBook |
+|   4 | Toys         |  1500.00 | 2025-01-15 | KidsZee   |
++-----+--------------+----------+------------+-----------+
+4 rows in set (0.00 sec)
+
+mysql> INSERT INTO Products(pid,product_name) values(5,'Keyboard');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from products;
++-----+--------------+----------+------------+-----------+
+| pid | product_name | price    | dop        | brand     |
++-----+--------------+----------+------------+-----------+
+|   1 | mobile       | 15000.00 | 2025-01-15 | IPhone    |
+|   2 | laptop       | 25000.00 | 2025-01-15 | Dell      |
+|   3 | Books        |  1200.00 | 2025-01-15 | BlackBook |
+|   4 | Toys         |  1500.00 | 2025-01-15 | KidsZee   |
+|   5 | Keyboard     |     NULL | NULL       | NULL      |
++-----+--------------+----------+------------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> update products set price=500 where pid=5;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from products;
++-----+--------------+----------+------------+-----------+
+| pid | product_name | price    | dop        | brand     |
++-----+--------------+----------+------------+-----------+
+|   1 | mobile       | 15000.00 | 2025-01-15 | IPhone    |
+|   2 | laptop       | 25000.00 | 2025-01-15 | Dell      |
+|   3 | Books        |  1200.00 | 2025-01-15 | BlackBook |
+|   4 | Toys         |  1500.00 | 2025-01-15 | KidsZee   |
+|   5 | Keyboard     |   500.00 | NULL       | NULL      |
++-----+--------------+----------+------------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> update products set product_name='Computer Book',price=2000 where pid
+=3;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from products;
++-----+---------------+----------+------------+-----------+
+| pid | product_name  | price    | dop        | brand     |
++-----+---------------+----------+------------+-----------+
+|   1 | mobile        | 15000.00 | 2025-01-15 | IPhone    |
+|   2 | laptop        | 25000.00 | 2025-01-15 | Dell      |
+|   3 | Computer Book |  2000.00 | 2025-01-15 | BlackBook |
+|   4 | Toys          |  1500.00 | 2025-01-15 | KidsZee   |
+|   5 | Keyboard      |   500.00 | NULL       | NULL      |
++-----+---------------+----------+------------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> delete from products where pid=5;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from products;
++-----+---------------+----------+------------+-----------+
+| pid | product_name  | price    | dop        | brand     |
++-----+---------------+----------+------------+-----------+
+|   1 | mobile        | 15000.00 | 2025-01-15 | IPhone    |
+|   2 | laptop        | 25000.00 | 2025-01-15 | Dell      |
+|   3 | Computer Book |  2000.00 | 2025-01-15 | BlackBook |
+|   4 | Toys          |  1500.00 | 2025-01-15 | KidsZee   |
++-----+---------------+----------+------------+-----------+
+4 rows in set (0.00 sec)
+
+mysql>

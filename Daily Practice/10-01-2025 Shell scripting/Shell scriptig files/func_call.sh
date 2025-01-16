@@ -1,0 +1,4 @@
+showDate(){
+	date
+}
+(showDate)

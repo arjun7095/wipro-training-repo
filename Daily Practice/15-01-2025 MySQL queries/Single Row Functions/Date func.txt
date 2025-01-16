@@ -1,0 +1,166 @@
+mysql> use nms_db;
+Database changed
+mysql> select current_date()
+    -> ;
++----------------+
+| current_date() |
++----------------+
+| 2025-01-15     |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select current_time();
++----------------+
+| current_time() |
++----------------+
+| 15:32:56       |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select curdate();
++------------+
+| curdate()  |
++------------+
+| 2025-01-15 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select curtime();
++-----------+
+| curtime() |
++-----------+
+| 15:33:09  |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> select adddate(current_date,Interval  5 day);
++---------------------------------------+
+| adddate(current_date,Interval  5 day) |
++---------------------------------------+
+| 2025-01-20                            |
++---------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select adddate(current_date,Interval  5 week);
++----------------------------------------+
+| adddate(current_date,Interval  5 week) |
++----------------------------------------+
+| 2025-02-19                             |
++----------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select adddate(current_date,Interval  5 month);
++-----------------------------------------+
+| adddate(current_date,Interval  5 month) |
++-----------------------------------------+
+| 2025-06-15                              |
++-----------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select adddate(current_date,Interval  5 year);
++----------------------------------------+
+| adddate(current_date,Interval  5 year) |
++----------------------------------------+
+| 2030-01-15                             |
++----------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select year(curdate);
+ERROR 1054 (42S22): Unknown column 'curdate' in 'field list'
+mysql> select year(current_date);
++--------------------+
+| year(current_date) |
++--------------------+
+|               2025 |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> select month(current_date);
++---------------------+
+| month(current_date) |
++---------------------+
+|                   1 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select day(current_date);
++-------------------+
+| day(current_date) |
++-------------------+
+|                15 |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> select hour(current_time);
++--------------------+
+| hour(current_time) |
++--------------------+
+|                 15 |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> select floor(1.999);
++--------------+
+| floor(1.999) |
++--------------+
+|            1 |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> select ceil(1.999);
++-------------+
+| ceil(1.999) |
++-------------+
+|           2 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select mod(7,5);
++----------+
+| mod(7,5) |
++----------+
+|        2 |
++----------+
+1 row in set (0.01 sec)
+
+mysql> select ABS(-9000);
++------------+
+| ABS(-9000) |
++------------+
+|       9000 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select exp(2);
++------------------+
+| exp(2)           |
++------------------+
+| 7.38905609893065 |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> select PI();
++----------+
+| PI()     |
++----------+
+| 3.141593 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select LN(2);
++--------------------+
+| LN(2)              |
++--------------------+
+| 0.6931471805599453 |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> select count(*) from employees;
++----------+
+| count(*) |
++----------+
+|       10 |
++----------+
+1 row in set (0.01 sec)
+
+mysql>

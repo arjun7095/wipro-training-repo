@@ -1,0 +1,134 @@
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ vi while_loop.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh while_loop.sh
+Enter the number
+2
+      PID    PPID    PGID     WINPID   TTY         UID    STIME COMMAND
+      108     107     108      15772  pty0      197609 09:29:35 /usr/bin/bash
+      537     536     536       4580  pty0      197609 12:40:28 /usr/bin/ps
+      107       1     107       8608  ?         197609 09:29:35 /usr/bin/mintty
+      536     108     536      22576  pty0      197609 12:40:20 /usr/bin/sh
+      PID    PPID    PGID     WINPID   TTY         UID    STIME COMMAND
+      108     107     108      15772  pty0      197609 09:29:35 /usr/bin/bash
+      107       1     107       8608  ?         197609 09:29:35 /usr/bin/mintty
+      539     536     536       2676  pty0      197609 12:40:30 /usr/bin/ps
+      536     108     536      22576  pty0      197609 12:40:20 /usr/bin/sh
+      PID    PPID    PGID     WINPID   TTY         UID    STIME COMMAND
+      108     107     108      15772  pty0      197609 09:29:35 /usr/bin/bash
+      541     536     536      11728  pty0      197609 12:40:32 /usr/bin/ps
+      107       1     107       8608  ?         197609 09:29:35 /usr/bin/mintty
+      536     108     536      22576  pty0      197609 12:40:20 /usr/bin/sh
+      PID    PPID    PGID     WINPID   TTY         UID    STIME COMMAND
+      108     107     108      15772  pty0      197609 09:29:35 /usr/bin/bash
+      107       1     107       8608  ?         197609 09:29:35 /usr/bin/mintty
+      543     536     536      15884  pty0      197609 12:40:34 /usr/bin/ps
+      536     108     536      22576  pty0      197609 12:40:20 /usr/bin/sh
+      PID    PPID    PGID     WINPID   TTY         UID    STIME COMMAND
+      108     107     108      15772  pty0      197609 09:29:35 /usr/bin/bash
+      107       1     107       8608  ?         197609 09:29:35 /usr/bin/mintty
+      545     536     536      14040  pty0      197609 12:40:36 /usr/bin/ps
+      536     108     536      22576  pty0      197609 12:40:20 /usr/bin/sh
+      PID    PPID    PGID     WINPID   TTY         UID    STIME COMMAND
+      108     107     108      15772  pty0      197609 09:29:35 /usr/bin/bash
+      107       1     107       8608  ?         197609 09:29:35 /usr/bin/mintty
+      547     536     536      19852  pty0      197609 12:40:38 /usr/bin/ps
+      536     108     536      22576  pty0      197609 12:40:20 /usr/bin/sh
+
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ vi while_with_case.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh while_with_case.sh
+Enter  Eid
+105
+105  javeed 20000
+Enter  Eid
+
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh while_with_case.sh
+Enter  Eid
+
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ vi while_with_case.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh while_with_case.sh
+Enter  Eid
+105
+105  javeed 20000
+Enter  Eid
+0
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ mv while_with_case.sh while-case_using-file.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ ls
+args.sh  employee.txt  ifelse.sh   variables.sh
+case.sh  hello.sh      math.sh     while-case_using-file.sh
+demo.sh  if_elif.sh    strings.sh  while_loop.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ vi until(do-while).sh
+bash: syntax error near unexpected token `('
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ vi until_do-while.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh until_do-while.sh
+      PID    PPID    PGID     WINPID   TTY         UID    STIME COMMAND
+      108     107     108      15772  pty0      197609 09:29:35 /usr/bin/bash
+      107       1     107       8608  ?         197609 09:29:35 /usr/bin/mintty
+      590     589     589      11024  pty0      197609 13:03:53 /usr/bin/ps
+      589     108     589      20828  pty0      197609 13:03:53 /usr/bin/sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ vi until_do-while.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ vi for_loop.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh for_loop.sh
+x is
+x is
+x is
+x is
+x is
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ vi for_loop.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh for_loop.sh
+x is 1
+x is 2
+x is 3
+x is 4
+x is 5
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ vi for_loop2.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh for_loop2.sh
+args.sh
+case.sh
+demo.sh
+for_loop.sh
+for_loop2.sh
+hello.sh
+if_elif.sh
+ifelse.sh
+math.sh
+strings.sh
+until_do-while.sh
+variables.sh
+while-case_using-file.sh
+while_loop.sh

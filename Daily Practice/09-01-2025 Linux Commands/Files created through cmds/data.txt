@@ -1,0 +1,62 @@
+# Lowercase letters
+a  
+b  
+c  
+d  
+
+# Uppercase letters
+A  
+B  
+C  
+D  
+
+# Any alphabet (Upper or Lower case)
+a  
+Z  
+m  
+Q  
+
+# Digits (0-9)
+1  
+5  
+9  
+
+# Three uppercase letters
+TOM  
+RAJ  
+WIN  
+GET  
+
+# One uppercase letter followed by four lowercase letters
+Azeez  
+Rajan  
+Kamla  
+Javed  
+
+# Special characters ($, #, @)
+$  
+#  
+@  
+
+# Strings starting with capital 'S'
+Satish  
+Sonu  
+Sham  
+
+# Strings ending with lowercase 'h'
+ashish  
+harish  
+
+# Smile or smile
+Smile  
+smile  
+
+# Valid phone numbers starting with 6, 7, 8, or 9
+9876543210  
+7894561230  
+6789012345  
+9998887776  
+
+# Invalid phone numbers for testing
+1234567890  
+0456789123  

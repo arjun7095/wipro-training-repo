@@ -1,0 +1,106 @@
+mysql> use nms_db
+Database changed
+mysql> select * from employees;
++-------+---------+----------+------+-----------+------------+------+------+
+| empid | empname | salary   | comm | job       | DOJ        | mid  | DNO  |
++-------+---------+----------+------+-----------+------------+------+------+
+|   101 | arjun   | 50000.00 | NULL | President | 2020-12-01 | NULL |   40 |
+|   102 | Smith   | 45000.00 | NULL | Manager   | 2021-09-23 |  101 |   10 |
+|   103 | Ford    | 40000.00 | NULL | Manager   | 2022-04-15 |  101 |   20 |
+|   104 | Tom     | 30000.00 | 1500 | Developer | 2023-10-18 |  102 |   10 |
+|   105 | Scott   | 35000.00 | 1000 | Developer | 2023-12-25 |  102 |   10 |
+|   106 | Jerry   | 25000.00 | 3000 | Tester    | 2025-01-13 |  103 |   20 |
+|   107 | Ravi    | 22000.00 | 4000 | Tester    | 2025-01-12 |  103 |   20 |
+|   108 | Adam    | 47000.00 | NULL | Analyst   | 2024-01-01 |  101 |   30 |
+|   109 | javeed  | 47000.00 | NULL | manager   | 2024-01-01 |  101 |   30 |
+|   110 | anil    |     NULL | NULL | NULL      | 2024-01-19 | NULL | NULL |
++-------+---------+----------+------+-----------+------------+------+------+
+10 rows in set (0.00 sec)
+
+mysql> select salary from employees where empname="Tom";
++----------+
+| salary   |
++----------+
+| 30000.00 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select * from employees where salary >(
+    -> select salary from employees where empname="Tom");
++-------+---------+----------+------+-----------+------------+------+------+
+| empid | empname | salary   | comm | job       | DOJ        | mid  | DNO  |
++-------+---------+----------+------+-----------+------------+------+------+
+|   101 | arjun   | 50000.00 | NULL | President | 2020-12-01 | NULL |   40 |
+|   102 | Smith   | 45000.00 | NULL | Manager   | 2021-09-23 |  101 |   10 |
+|   103 | Ford    | 40000.00 | NULL | Manager   | 2022-04-15 |  101 |   20 |
+|   105 | Scott   | 35000.00 | 1000 | Developer | 2023-12-25 |  102 |   10 |
+|   108 | Adam    | 47000.00 | NULL | Analyst   | 2024-01-01 |  101 |   30 |
+|   109 | javeed  | 47000.00 | NULL | manager   | 2024-01-01 |  101 |   30 |
++-------+---------+----------+------+-----------+------------+------+------+
+6 rows in set (0.00 sec)
+
+mysql> select * from employees where dno=(select dno from dept where locatio
+n='Hyderabad');
++-------+---------+----------+------+-----------+------------+------+------+
+| empid | empname | salary   | comm | job       | DOJ        | mid  | DNO  |
++-------+---------+----------+------+-----------+------------+------+------+
+|   102 | Smith   | 45000.00 | NULL | Manager   | 2021-09-23 |  101 |   10 |
+|   104 | Tom     | 30000.00 | 1500 | Developer | 2023-10-18 |  102 |   10 |
+|   105 | Scott   | 35000.00 | 1000 | Developer | 2023-12-25 |  102 |   10 |
++-------+---------+----------+------+-----------+------------+------+------+
+3 rows in set (0.01 sec)
+
+mysql> select * from employees where dno=(select dno from dept where location='Hyderabad' or location='chennai');
+ERROR 1242 (21000): Subquery returns more than 1 row
+mysql> select * from employees where dno in (select dno from dept where loca
+tion='Hyderabad' or location='chennai');
++-------+---------+----------+------+-----------+------------+------+------+
+| empid | empname | salary   | comm | job       | DOJ        | mid  | DNO  |
++-------+---------+----------+------+-----------+------------+------+------+
+|   102 | Smith   | 45000.00 | NULL | Manager   | 2021-09-23 |  101 |   10 |
+|   104 | Tom     | 30000.00 | 1500 | Developer | 2023-10-18 |  102 |   10 |
+|   105 | Scott   | 35000.00 | 1000 | Developer | 2023-12-25 |  102 |   10 |
+|   101 | arjun   | 50000.00 | NULL | President | 2020-12-01 | NULL |   40 |
++-------+---------+----------+------+-----------+------------+------+------+
+4 rows in set (0.00 sec)
+
+mysql> select comm from employees where job="Developer";
++------+
+| comm |
++------+
+| 1500 |
+| 1000 |
++------+
+2 rows in set (0.00 sec)
+
+mysql> select comm from employees where job="Developer";
++------+
+| comm |
++------+
+| 1500 |
+| 1000 |
++------+
+2 rows in set (0.00 sec)
+
+mysql> select * from employees where salary >any (select comm from employees
+ where job="Developer");
++-------+---------+----------+------+-----------+------------+------+------+
+| empid | empname | salary   | comm | job       | DOJ        | mid  | DNO  |
++-------+---------+----------+------+-----------+------------+------+------+
+|   101 | arjun   | 50000.00 | NULL | President | 2020-12-01 | NULL |   40 |
+|   102 | Smith   | 45000.00 | NULL | Manager   | 2021-09-23 |  101 |   10 |
+|   103 | Ford    | 40000.00 | NULL | Manager   | 2022-04-15 |  101 |   20 |
+|   104 | Tom     | 30000.00 | 1500 | Developer | 2023-10-18 |  102 |   10 |
+|   105 | Scott   | 35000.00 | 1000 | Developer | 2023-12-25 |  102 |   10 |
+|   106 | Jerry   | 25000.00 | 3000 | Tester    | 2025-01-13 |  103 |   20 |
+|   107 | Ravi    | 22000.00 | 4000 | Tester    | 2025-01-12 |  103 |   20 |
+|   108 | Adam    | 47000.00 | NULL | Analyst   | 2024-01-01 |  101 |   30 |
+|   109 | javeed  | 47000.00 | NULL | manager   | 2024-01-01 |  101 |   30 |
++-------+---------+----------+------+-----------+------------+------+------+
+9 rows in set (0.00 sec)
+
+mysql> select * from employees where salary <any (select comm from employees
+ where job="Developer");
+Empty set (0.00 sec)
+
+mysql>

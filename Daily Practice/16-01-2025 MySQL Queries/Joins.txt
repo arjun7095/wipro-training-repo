@@ -1,0 +1,448 @@
+mysql> use nms_db;
+Database changed
+mysql> select * from employees;
++-------+---------+----------+------+-----------+------------+------+------+
+| empid | empname | salary   | comm | job       | DOJ        | mid  | DNO  |
++-------+---------+----------+------+-----------+------------+------+------+
+|   101 | arjun   | 50000.00 | NULL | President | 2020-12-01 | NULL |   40 |
+|   102 | Smith   | 45000.00 | NULL | Manager   | 2021-09-23 |  101 |   10 |
+|   103 | Ford    | 40000.00 | NULL | Manager   | 2022-04-15 |  101 |   20 |
+|   104 | Tom     | 30000.00 | 1500 | Developer | 2023-10-18 |  102 |   10 |
+|   105 | Scott   | 35000.00 | 1000 | Developer | 2023-12-25 |  102 |   10 |
+|   106 | Jerry   | 25000.00 | 3000 | Tester    | 2025-01-13 |  103 |   20 |
+|   107 | Ravi    | 22000.00 | 4000 | Tester    | 2025-01-12 |  103 |   20 |
+|   108 | Adam    | 47000.00 | NULL | Analyst   | 2024-01-01 |  101 |   30 |
+|   109 | javeed  | 47000.00 | NULL | manager   | 2024-01-01 |  101 |   30 |
+|   110 | anil    |     NULL | NULL | NULL      | 2024-01-19 | NULL | NULL |
++-------+---------+----------+------+-----------+------------+------+------+
+10 rows in set (0.00 sec)
+
+mysql> select * from dept;
++-----+-------------+-----------+
+| DNO | dname       | LOCATION  |
++-----+-------------+-----------+
+|  10 | Development | Hyderabad |
+|  20 | Testing     | Banglore  |
+|  30 | Operation   | Mumbai    |
+|  40 | Research    | Chennai   |
+|  50 | Sales       | Delhi     |
++-----+-------------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> select empid,empname,salary,job,d.dno,dname,location from employees.e
+,dept d;
+ERROR 1049 (42000): Unknown database 'employees'
+mysql> select empid,empname,salary,job,d.dno,dname,location from employees e
+,dept d;
++-------+---------+----------+-----------+-----+-------------+-----------+
+| empid | empname | salary   | job       | dno | dname       | location  |
++-------+---------+----------+-----------+-----+-------------+-----------+
+|   108 | Adam    | 47000.00 | Analyst   |  50 | Sales       | Delhi     |
+|   108 | Adam    | 47000.00 | Analyst   |  40 | Research    | Chennai   |
+|   108 | Adam    | 47000.00 | Analyst   |  30 | Operation   | Mumbai    |
+|   108 | Adam    | 47000.00 | Analyst   |  20 | Testing     | Banglore  |
+|   108 | Adam    | 47000.00 | Analyst   |  10 | Development | Hyderabad |
+|   110 | anil    |     NULL | NULL      |  50 | Sales       | Delhi     |
+|   110 | anil    |     NULL | NULL      |  40 | Research    | Chennai   |
+|   110 | anil    |     NULL | NULL      |  30 | Operation   | Mumbai    |
+|   110 | anil    |     NULL | NULL      |  20 | Testing     | Banglore  |
+|   110 | anil    |     NULL | NULL      |  10 | Development | Hyderabad |
+|   101 | arjun   | 50000.00 | President |  50 | Sales       | Delhi     |
+|   101 | arjun   | 50000.00 | President |  40 | Research    | Chennai   |
+|   101 | arjun   | 50000.00 | President |  30 | Operation   | Mumbai    |
+|   101 | arjun   | 50000.00 | President |  20 | Testing     | Banglore  |
+|   101 | arjun   | 50000.00 | President |  10 | Development | Hyderabad |
+|   103 | Ford    | 40000.00 | Manager   |  50 | Sales       | Delhi     |
+|   103 | Ford    | 40000.00 | Manager   |  40 | Research    | Chennai   |
+|   103 | Ford    | 40000.00 | Manager   |  30 | Operation   | Mumbai    |
+|   103 | Ford    | 40000.00 | Manager   |  20 | Testing     | Banglore  |
+|   103 | Ford    | 40000.00 | Manager   |  10 | Development | Hyderabad |
+|   109 | javeed  | 47000.00 | manager   |  50 | Sales       | Delhi     |
+|   109 | javeed  | 47000.00 | manager   |  40 | Research    | Chennai   |
+|   109 | javeed  | 47000.00 | manager   |  30 | Operation   | Mumbai    |
+|   109 | javeed  | 47000.00 | manager   |  20 | Testing     | Banglore  |
+|   109 | javeed  | 47000.00 | manager   |  10 | Development | Hyderabad |
+|   106 | Jerry   | 25000.00 | Tester    |  50 | Sales       | Delhi     |
+|   106 | Jerry   | 25000.00 | Tester    |  40 | Research    | Chennai   |
+|   106 | Jerry   | 25000.00 | Tester    |  30 | Operation   | Mumbai    |
+|   106 | Jerry   | 25000.00 | Tester    |  20 | Testing     | Banglore  |
+|   106 | Jerry   | 25000.00 | Tester    |  10 | Development | Hyderabad |
+|   107 | Ravi    | 22000.00 | Tester    |  50 | Sales       | Delhi     |
+|   107 | Ravi    | 22000.00 | Tester    |  40 | Research    | Chennai   |
+|   107 | Ravi    | 22000.00 | Tester    |  30 | Operation   | Mumbai    |
+|   107 | Ravi    | 22000.00 | Tester    |  20 | Testing     | Banglore  |
+|   107 | Ravi    | 22000.00 | Tester    |  10 | Development | Hyderabad |
+|   105 | Scott   | 35000.00 | Developer |  50 | Sales       | Delhi     |
+|   105 | Scott   | 35000.00 | Developer |  40 | Research    | Chennai   |
+|   105 | Scott   | 35000.00 | Developer |  30 | Operation   | Mumbai    |
+|   105 | Scott   | 35000.00 | Developer |  20 | Testing     | Banglore  |
+|   105 | Scott   | 35000.00 | Developer |  10 | Development | Hyderabad |
+|   102 | Smith   | 45000.00 | Manager   |  50 | Sales       | Delhi     |
+|   102 | Smith   | 45000.00 | Manager   |  40 | Research    | Chennai   |
+|   102 | Smith   | 45000.00 | Manager   |  30 | Operation   | Mumbai    |
+|   102 | Smith   | 45000.00 | Manager   |  20 | Testing     | Banglore  |
+|   102 | Smith   | 45000.00 | Manager   |  10 | Development | Hyderabad |
+|   104 | Tom     | 30000.00 | Developer |  50 | Sales       | Delhi     |
+|   104 | Tom     | 30000.00 | Developer |  40 | Research    | Chennai   |
+|   104 | Tom     | 30000.00 | Developer |  30 | Operation   | Mumbai    |
+|   104 | Tom     | 30000.00 | Developer |  20 | Testing     | Banglore  |
+|   104 | Tom     | 30000.00 | Developer |  10 | Development | Hyderabad |
++-------+---------+----------+-----------+-----+-------------+-----------+
+50 rows in set (0.00 sec)
+
+mysql> select empid,empname,salary,job,d.dno,dname,location from employees e,dept d where e.dno=d.dno;
++-------+---------+----------+-----------+-----+-------------+-----------+
+| empid | empname | salary   | job       | dno | dname       | location  |
++-------+---------+----------+-----------+-----+-------------+-----------+
+|   102 | Smith   | 45000.00 | Manager   |  10 | Development | Hyderabad |
+|   104 | Tom     | 30000.00 | Developer |  10 | Development | Hyderabad |
+|   105 | Scott   | 35000.00 | Developer |  10 | Development | Hyderabad |
+|   103 | Ford    | 40000.00 | Manager   |  20 | Testing     | Banglore  |
+|   106 | Jerry   | 25000.00 | Tester    |  20 | Testing     | Banglore  |
+|   107 | Ravi    | 22000.00 | Tester    |  20 | Testing     | Banglore  |
+|   108 | Adam    | 47000.00 | Analyst   |  30 | Operation   | Mumbai    |
+|   109 | javeed  | 47000.00 | manager   |  30 | Operation   | Mumbai    |
+|   101 | arjun   | 50000.00 | President |  40 | Research    | Chennai   |
++-------+---------+----------+-----------+-----+-------------+-----------+
+9 rows in set (0.00 sec)
+
+mysql> select empid,empname,salary,job,d.dno,dname,location from employees e,dept d where e.dno!=d.dno;
++-------+---------+----------+-----------+-----+-------------+-----------+
+| empid | empname | salary   | job       | dno | dname       | location  |
++-------+---------+----------+-----------+-----+-------------+-----------+
+|   101 | arjun   | 50000.00 | President |  50 | Sales       | Delhi     |
+|   101 | arjun   | 50000.00 | President |  30 | Operation   | Mumbai    |
+|   101 | arjun   | 50000.00 | President |  20 | Testing     | Banglore  |
+|   101 | arjun   | 50000.00 | President |  10 | Development | Hyderabad |
+|   102 | Smith   | 45000.00 | Manager   |  50 | Sales       | Delhi     |
+|   102 | Smith   | 45000.00 | Manager   |  40 | Research    | Chennai   |
+|   102 | Smith   | 45000.00 | Manager   |  30 | Operation   | Mumbai    |
+|   102 | Smith   | 45000.00 | Manager   |  20 | Testing     | Banglore  |
+|   103 | Ford    | 40000.00 | Manager   |  50 | Sales       | Delhi     |
+|   103 | Ford    | 40000.00 | Manager   |  40 | Research    | Chennai   |
+|   103 | Ford    | 40000.00 | Manager   |  30 | Operation   | Mumbai    |
+|   103 | Ford    | 40000.00 | Manager   |  10 | Development | Hyderabad |
+|   104 | Tom     | 30000.00 | Developer |  50 | Sales       | Delhi     |
+|   104 | Tom     | 30000.00 | Developer |  40 | Research    | Chennai   |
+|   104 | Tom     | 30000.00 | Developer |  30 | Operation   | Mumbai    |
+|   104 | Tom     | 30000.00 | Developer |  20 | Testing     | Banglore  |
+|   105 | Scott   | 35000.00 | Developer |  50 | Sales       | Delhi     |
+|   105 | Scott   | 35000.00 | Developer |  40 | Research    | Chennai   |
+|   105 | Scott   | 35000.00 | Developer |  30 | Operation   | Mumbai    |
+|   105 | Scott   | 35000.00 | Developer |  20 | Testing     | Banglore  |
+|   106 | Jerry   | 25000.00 | Tester    |  50 | Sales       | Delhi     |
+|   106 | Jerry   | 25000.00 | Tester    |  40 | Research    | Chennai   |
+|   106 | Jerry   | 25000.00 | Tester    |  30 | Operation   | Mumbai    |
+|   106 | Jerry   | 25000.00 | Tester    |  10 | Development | Hyderabad |
+|   107 | Ravi    | 22000.00 | Tester    |  50 | Sales       | Delhi     |
+|   107 | Ravi    | 22000.00 | Tester    |  40 | Research    | Chennai   |
+|   107 | Ravi    | 22000.00 | Tester    |  30 | Operation   | Mumbai    |
+|   107 | Ravi    | 22000.00 | Tester    |  10 | Development | Hyderabad |
+|   108 | Adam    | 47000.00 | Analyst   |  50 | Sales       | Delhi     |
+|   108 | Adam    | 47000.00 | Analyst   |  40 | Research    | Chennai   |
+|   108 | Adam    | 47000.00 | Analyst   |  20 | Testing     | Banglore  |
+|   108 | Adam    | 47000.00 | Analyst   |  10 | Development | Hyderabad |
+|   109 | javeed  | 47000.00 | manager   |  50 | Sales       | Delhi     |
+|   109 | javeed  | 47000.00 | manager   |  40 | Research    | Chennai   |
+|   109 | javeed  | 47000.00 | manager   |  20 | Testing     | Banglore  |
+|   109 | javeed  | 47000.00 | manager   |  10 | Development | Hyderabad |
++-------+---------+----------+-----------+-----+-------------+-----------+
+36 rows in set (0.00 sec)
+
+mysql> select empid,empname,salary,job,d.dno,dname,location from employees e,dept d where e.dno=d.dno;
++-------+---------+----------+-----------+-----+-------------+-----------+
+| empid | empname | salary   | job       | dno | dname       | location  |
++-------+---------+----------+-----------+-----+-------------+-----------+
+|   102 | Smith   | 45000.00 | Manager   |  10 | Development | Hyderabad |
+|   104 | Tom     | 30000.00 | Developer |  10 | Development | Hyderabad |
+|   105 | Scott   | 35000.00 | Developer |  10 | Development | Hyderabad |
+|   103 | Ford    | 40000.00 | Manager   |  20 | Testing     | Banglore  |
+|   106 | Jerry   | 25000.00 | Tester    |  20 | Testing     | Banglore  |
+|   107 | Ravi    | 22000.00 | Tester    |  20 | Testing     | Banglore  |
+|   108 | Adam    | 47000.00 | Analyst   |  30 | Operation   | Mumbai    |
+|   109 | javeed  | 47000.00 | manager   |  30 | Operation   | Mumbai    |
+|   101 | arjun   | 50000.00 | President |  40 | Research    | Chennai   |
++-------+---------+----------+-----------+-----+-------------+-----------+
+9 rows in set (0.00 sec)
+
+mysql> select empid,empname,salary,job,d.dno,dname,location from employees e
+ INNER JOIN dept d where e.dno=d.dno;
++-------+---------+----------+-----------+-----+-------------+-----------+
+| empid | empname | salary   | job       | dno | dname       | location  |
++-------+---------+----------+-----------+-----+-------------+-----------+
+|   102 | Smith   | 45000.00 | Manager   |  10 | Development | Hyderabad |
+|   104 | Tom     | 30000.00 | Developer |  10 | Development | Hyderabad |
+|   105 | Scott   | 35000.00 | Developer |  10 | Development | Hyderabad |
+|   103 | Ford    | 40000.00 | Manager   |  20 | Testing     | Banglore  |
+|   106 | Jerry   | 25000.00 | Tester    |  20 | Testing     | Banglore  |
+|   107 | Ravi    | 22000.00 | Tester    |  20 | Testing     | Banglore  |
+|   108 | Adam    | 47000.00 | Analyst   |  30 | Operation   | Mumbai    |
+|   109 | javeed  | 47000.00 | manager   |  30 | Operation   | Mumbai    |
+|   101 | arjun   | 50000.00 | President |  40 | Research    | Chennai   |
++-------+---------+----------+-----------+-----+-------------+-----------+
+9 rows in set (0.00 sec)
+
+mysql> select empid,empname,salary,job,d.dno,dname,location from employees e INNER JOIN dept d where e.dno!=d.dno;
++-------+---------+----------+-----------+-----+-------------+-----------+
+| empid | empname | salary   | job       | dno | dname       | location  |
++-------+---------+----------+-----------+-----+-------------+-----------+
+|   101 | arjun   | 50000.00 | President |  50 | Sales       | Delhi     |
+|   101 | arjun   | 50000.00 | President |  30 | Operation   | Mumbai    |
+|   101 | arjun   | 50000.00 | President |  20 | Testing     | Banglore  |
+|   101 | arjun   | 50000.00 | President |  10 | Development | Hyderabad |
+|   102 | Smith   | 45000.00 | Manager   |  50 | Sales       | Delhi     |
+|   102 | Smith   | 45000.00 | Manager   |  40 | Research    | Chennai   |
+|   102 | Smith   | 45000.00 | Manager   |  30 | Operation   | Mumbai    |
+|   102 | Smith   | 45000.00 | Manager   |  20 | Testing     | Banglore  |
+|   103 | Ford    | 40000.00 | Manager   |  50 | Sales       | Delhi     |
+|   103 | Ford    | 40000.00 | Manager   |  40 | Research    | Chennai   |
+|   103 | Ford    | 40000.00 | Manager   |  30 | Operation   | Mumbai    |
+|   103 | Ford    | 40000.00 | Manager   |  10 | Development | Hyderabad |
+|   104 | Tom     | 30000.00 | Developer |  50 | Sales       | Delhi     |
+|   104 | Tom     | 30000.00 | Developer |  40 | Research    | Chennai   |
+|   104 | Tom     | 30000.00 | Developer |  30 | Operation   | Mumbai    |
+|   104 | Tom     | 30000.00 | Developer |  20 | Testing     | Banglore  |
+|   105 | Scott   | 35000.00 | Developer |  50 | Sales       | Delhi     |
+|   105 | Scott   | 35000.00 | Developer |  40 | Research    | Chennai   |
+|   105 | Scott   | 35000.00 | Developer |  30 | Operation   | Mumbai    |
+|   105 | Scott   | 35000.00 | Developer |  20 | Testing     | Banglore  |
+|   106 | Jerry   | 25000.00 | Tester    |  50 | Sales       | Delhi     |
+|   106 | Jerry   | 25000.00 | Tester    |  40 | Research    | Chennai   |
+|   106 | Jerry   | 25000.00 | Tester    |  30 | Operation   | Mumbai    |
+|   106 | Jerry   | 25000.00 | Tester    |  10 | Development | Hyderabad |
+|   107 | Ravi    | 22000.00 | Tester    |  50 | Sales       | Delhi     |
+|   107 | Ravi    | 22000.00 | Tester    |  40 | Research    | Chennai   |
+|   107 | Ravi    | 22000.00 | Tester    |  30 | Operation   | Mumbai    |
+|   107 | Ravi    | 22000.00 | Tester    |  10 | Development | Hyderabad |
+|   108 | Adam    | 47000.00 | Analyst   |  50 | Sales       | Delhi     |
+|   108 | Adam    | 47000.00 | Analyst   |  40 | Research    | Chennai   |
+|   108 | Adam    | 47000.00 | Analyst   |  20 | Testing     | Banglore  |
+|   108 | Adam    | 47000.00 | Analyst   |  10 | Development | Hyderabad |
+|   109 | javeed  | 47000.00 | manager   |  50 | Sales       | Delhi     |
+|   109 | javeed  | 47000.00 | manager   |  40 | Research    | Chennai   |
+|   109 | javeed  | 47000.00 | manager   |  20 | Testing     | Banglore  |
+|   109 | javeed  | 47000.00 | manager   |  10 | Development | Hyderabad |
++-------+---------+----------+-----------+-----+-------------+-----------+
+36 rows in set (0.00 sec)
+
+mysql> select empid,empname,salary,job,d.dno,dname,location from employees e INNER JOIN dept d on e.dno!=d.dno;
++-------+---------+----------+-----------+-----+-------------+-----------+
+| empid | empname | salary   | job       | dno | dname       | location  |
++-------+---------+----------+-----------+-----+-------------+-----------+
+|   101 | arjun   | 50000.00 | President |  50 | Sales       | Delhi     |
+|   101 | arjun   | 50000.00 | President |  30 | Operation   | Mumbai    |
+|   101 | arjun   | 50000.00 | President |  20 | Testing     | Banglore  |
+|   101 | arjun   | 50000.00 | President |  10 | Development | Hyderabad |
+|   102 | Smith   | 45000.00 | Manager   |  50 | Sales       | Delhi     |
+|   102 | Smith   | 45000.00 | Manager   |  40 | Research    | Chennai   |
+|   102 | Smith   | 45000.00 | Manager   |  30 | Operation   | Mumbai    |
+|   102 | Smith   | 45000.00 | Manager   |  20 | Testing     | Banglore  |
+|   103 | Ford    | 40000.00 | Manager   |  50 | Sales       | Delhi     |
+|   103 | Ford    | 40000.00 | Manager   |  40 | Research    | Chennai   |
+|   103 | Ford    | 40000.00 | Manager   |  30 | Operation   | Mumbai    |
+|   103 | Ford    | 40000.00 | Manager   |  10 | Development | Hyderabad |
+|   104 | Tom     | 30000.00 | Developer |  50 | Sales       | Delhi     |
+|   104 | Tom     | 30000.00 | Developer |  40 | Research    | Chennai   |
+|   104 | Tom     | 30000.00 | Developer |  30 | Operation   | Mumbai    |
+|   104 | Tom     | 30000.00 | Developer |  20 | Testing     | Banglore  |
+|   105 | Scott   | 35000.00 | Developer |  50 | Sales       | Delhi     |
+|   105 | Scott   | 35000.00 | Developer |  40 | Research    | Chennai   |
+|   105 | Scott   | 35000.00 | Developer |  30 | Operation   | Mumbai    |
+|   105 | Scott   | 35000.00 | Developer |  20 | Testing     | Banglore  |
+|   106 | Jerry   | 25000.00 | Tester    |  50 | Sales       | Delhi     |
+|   106 | Jerry   | 25000.00 | Tester    |  40 | Research    | Chennai   |
+|   106 | Jerry   | 25000.00 | Tester    |  30 | Operation   | Mumbai    |
+|   106 | Jerry   | 25000.00 | Tester    |  10 | Development | Hyderabad |
+|   107 | Ravi    | 22000.00 | Tester    |  50 | Sales       | Delhi     |
+|   107 | Ravi    | 22000.00 | Tester    |  40 | Research    | Chennai   |
+|   107 | Ravi    | 22000.00 | Tester    |  30 | Operation   | Mumbai    |
+|   107 | Ravi    | 22000.00 | Tester    |  10 | Development | Hyderabad |
+|   108 | Adam    | 47000.00 | Analyst   |  50 | Sales       | Delhi     |
+|   108 | Adam    | 47000.00 | Analyst   |  40 | Research    | Chennai   |
+|   108 | Adam    | 47000.00 | Analyst   |  20 | Testing     | Banglore  |
+|   108 | Adam    | 47000.00 | Analyst   |  10 | Development | Hyderabad |
+|   109 | javeed  | 47000.00 | manager   |  50 | Sales       | Delhi     |
+|   109 | javeed  | 47000.00 | manager   |  40 | Research    | Chennai   |
+|   109 | javeed  | 47000.00 | manager   |  20 | Testing     | Banglore  |
+|   109 | javeed  | 47000.00 | manager   |  10 | Development | Hyderabad |
++-------+---------+----------+-----------+-----+-------------+-----------+
+36 rows in set (0.00 sec)
+
+mysql> select empid,empname,salary,job,d.dno,dname,location from employees e INNER JOIN dept d on e.dno=d.dno;
++-------+---------+----------+-----------+-----+-------------+-----------+
+| empid | empname | salary   | job       | dno | dname       | location  |
++-------+---------+----------+-----------+-----+-------------+-----------+
+|   102 | Smith   | 45000.00 | Manager   |  10 | Development | Hyderabad |
+|   104 | Tom     | 30000.00 | Developer |  10 | Development | Hyderabad |
+|   105 | Scott   | 35000.00 | Developer |  10 | Development | Hyderabad |
+|   103 | Ford    | 40000.00 | Manager   |  20 | Testing     | Banglore  |
+|   106 | Jerry   | 25000.00 | Tester    |  20 | Testing     | Banglore  |
+|   107 | Ravi    | 22000.00 | Tester    |  20 | Testing     | Banglore  |
+|   108 | Adam    | 47000.00 | Analyst   |  30 | Operation   | Mumbai    |
+|   109 | javeed  | 47000.00 | manager   |  30 | Operation   | Mumbai    |
+|   101 | arjun   | 50000.00 | President |  40 | Research    | Chennai   |
++-------+---------+----------+-----------+-----+-------------+-----------+
+9 rows in set (0.00 sec)
+
+mysql> select empid,empname,salary,job,d.dno,dname,location from employees e JOIN dept d on e.dno!=d.dno;
++-------+---------+----------+-----------+-----+-------------+-----------+
+| empid | empname | salary   | job       | dno | dname       | location  |
++-------+---------+----------+-----------+-----+-------------+-----------+
+|   101 | arjun   | 50000.00 | President |  50 | Sales       | Delhi     |
+|   101 | arjun   | 50000.00 | President |  30 | Operation   | Mumbai    |
+|   101 | arjun   | 50000.00 | President |  20 | Testing     | Banglore  |
+|   101 | arjun   | 50000.00 | President |  10 | Development | Hyderabad |
+|   102 | Smith   | 45000.00 | Manager   |  50 | Sales       | Delhi     |
+|   102 | Smith   | 45000.00 | Manager   |  40 | Research    | Chennai   |
+|   102 | Smith   | 45000.00 | Manager   |  30 | Operation   | Mumbai    |
+|   102 | Smith   | 45000.00 | Manager   |  20 | Testing     | Banglore  |
+|   103 | Ford    | 40000.00 | Manager   |  50 | Sales       | Delhi     |
+|   103 | Ford    | 40000.00 | Manager   |  40 | Research    | Chennai   |
+|   103 | Ford    | 40000.00 | Manager   |  30 | Operation   | Mumbai    |
+|   103 | Ford    | 40000.00 | Manager   |  10 | Development | Hyderabad |
+|   104 | Tom     | 30000.00 | Developer |  50 | Sales       | Delhi     |
+|   104 | Tom     | 30000.00 | Developer |  40 | Research    | Chennai   |
+|   104 | Tom     | 30000.00 | Developer |  30 | Operation   | Mumbai    |
+|   104 | Tom     | 30000.00 | Developer |  20 | Testing     | Banglore  |
+|   105 | Scott   | 35000.00 | Developer |  50 | Sales       | Delhi     |
+|   105 | Scott   | 35000.00 | Developer |  40 | Research    | Chennai   |
+|   105 | Scott   | 35000.00 | Developer |  30 | Operation   | Mumbai    |
+|   105 | Scott   | 35000.00 | Developer |  20 | Testing     | Banglore  |
+|   106 | Jerry   | 25000.00 | Tester    |  50 | Sales       | Delhi     |
+|   106 | Jerry   | 25000.00 | Tester    |  40 | Research    | Chennai   |
+|   106 | Jerry   | 25000.00 | Tester    |  30 | Operation   | Mumbai    |
+|   106 | Jerry   | 25000.00 | Tester    |  10 | Development | Hyderabad |
+|   107 | Ravi    | 22000.00 | Tester    |  50 | Sales       | Delhi     |
+|   107 | Ravi    | 22000.00 | Tester    |  40 | Research    | Chennai   |
+|   107 | Ravi    | 22000.00 | Tester    |  30 | Operation   | Mumbai    |
+|   107 | Ravi    | 22000.00 | Tester    |  10 | Development | Hyderabad |
+|   108 | Adam    | 47000.00 | Analyst   |  50 | Sales       | Delhi     |
+|   108 | Adam    | 47000.00 | Analyst   |  40 | Research    | Chennai   |
+|   108 | Adam    | 47000.00 | Analyst   |  20 | Testing     | Banglore  |
+|   108 | Adam    | 47000.00 | Analyst   |  10 | Development | Hyderabad |
+|   109 | javeed  | 47000.00 | manager   |  50 | Sales       | Delhi     |
+|   109 | javeed  | 47000.00 | manager   |  40 | Research    | Chennai   |
+|   109 | javeed  | 47000.00 | manager   |  20 | Testing     | Banglore  |
+|   109 | javeed  | 47000.00 | manager   |  10 | Development | Hyderabad |
++-------+---------+----------+-----------+-----+-------------+-----------+
+36 rows in set (0.00 sec)
+
+mysql> select empid,empname,salary,job,d.dno,dname,location from employees e JOIN dept d on e.dno=d.dno;
++-------+---------+----------+-----------+-----+-------------+-----------+
+| empid | empname | salary   | job       | dno | dname       | location  |
++-------+---------+----------+-----------+-----+-------------+-----------+
+|   102 | Smith   | 45000.00 | Manager   |  10 | Development | Hyderabad |
+|   104 | Tom     | 30000.00 | Developer |  10 | Development | Hyderabad |
+|   105 | Scott   | 35000.00 | Developer |  10 | Development | Hyderabad |
+|   103 | Ford    | 40000.00 | Manager   |  20 | Testing     | Banglore  |
+|   106 | Jerry   | 25000.00 | Tester    |  20 | Testing     | Banglore  |
+|   107 | Ravi    | 22000.00 | Tester    |  20 | Testing     | Banglore  |
+|   108 | Adam    | 47000.00 | Analyst   |  30 | Operation   | Mumbai    |
+|   109 | javeed  | 47000.00 | manager   |  30 | Operation   | Mumbai    |
+|   101 | arjun   | 50000.00 | President |  40 | Research    | Chennai   |
++-------+---------+----------+-----------+-----+-------------+-----------+
+9 rows in set (0.00 sec)
+
+mysql> select empid,empname,salary,job,d.dno,dname,location from employees e JOIN dept d on e.dno=d.dno and job!='developer';
++-------+---------+----------+-----------+-----+-------------+-----------+
+| empid | empname | salary   | job       | dno | dname       | location  |
++-------+---------+----------+-----------+-----+-------------+-----------+
+|   102 | Smith   | 45000.00 | Manager   |  10 | Development | Hyderabad |
+|   103 | Ford    | 40000.00 | Manager   |  20 | Testing     | Banglore  |
+|   106 | Jerry   | 25000.00 | Tester    |  20 | Testing     | Banglore  |
+|   107 | Ravi    | 22000.00 | Tester    |  20 | Testing     | Banglore  |
+|   108 | Adam    | 47000.00 | Analyst   |  30 | Operation   | Mumbai    |
+|   109 | javeed  | 47000.00 | manager   |  30 | Operation   | Mumbai    |
+|   101 | arjun   | 50000.00 | President |  40 | Research    | Chennai   |
++-------+---------+----------+-----------+-----+-------------+-----------+
+7 rows in set (0.00 sec)
+
+mysql> select empid,empname,salary,job,d.dno,dname,location from employees e NATURAL JOIN dept d;
++-------+---------+----------+-----------+-----+-------------+-----------+
+| empid | empname | salary   | job       | dno | dname       | location  |
++-------+---------+----------+-----------+-----+-------------+-----------+
+|   102 | Smith   | 45000.00 | Manager   |  10 | Development | Hyderabad |
+|   104 | Tom     | 30000.00 | Developer |  10 | Development | Hyderabad |
+|   105 | Scott   | 35000.00 | Developer |  10 | Development | Hyderabad |
+|   103 | Ford    | 40000.00 | Manager   |  20 | Testing     | Banglore  |
+|   106 | Jerry   | 25000.00 | Tester    |  20 | Testing     | Banglore  |
+|   107 | Ravi    | 22000.00 | Tester    |  20 | Testing     | Banglore  |
+|   108 | Adam    | 47000.00 | Analyst   |  30 | Operation   | Mumbai    |
+|   109 | javeed  | 47000.00 | manager   |  30 | Operation   | Mumbai    |
+|   101 | arjun   | 50000.00 | President |  40 | Research    | Chennai   |
++-------+---------+----------+-----------+-----+-------------+-----------+
+9 rows in set (0.00 sec)
+
+mysql> select empid,empname,salary,job,d.dno,dname,location from employees e JOIN dept d USING(dno,dno);
++-------+---------+----------+-----------+-----+-------------+-----------+
+| empid | empname | salary   | job       | dno | dname       | location  |
++-------+---------+----------+-----------+-----+-------------+-----------+
+|   102 | Smith   | 45000.00 | Manager   |  10 | Development | Hyderabad |
+|   104 | Tom     | 30000.00 | Developer |  10 | Development | Hyderabad |
+|   105 | Scott   | 35000.00 | Developer |  10 | Development | Hyderabad |
+|   103 | Ford    | 40000.00 | Manager   |  20 | Testing     | Banglore  |
+|   106 | Jerry   | 25000.00 | Tester    |  20 | Testing     | Banglore  |
+|   107 | Ravi    | 22000.00 | Tester    |  20 | Testing     | Banglore  |
+|   108 | Adam    | 47000.00 | Analyst   |  30 | Operation   | Mumbai    |
+|   109 | javeed  | 47000.00 | manager   |  30 | Operation   | Mumbai    |
+|   101 | arjun   | 50000.00 | President |  40 | Research    | Chennai   |
++-------+---------+----------+-----------+-----+-------------+-----------+
+9 rows in set (0.00 sec)
+
+mysql> select empid,empname,salary,job,d.dno,dname,location from employees e LEFT OUTER JOIN dept d on (d.dno=e.dno);
++-------+---------+----------+-----------+------+-------------+-----------+
+| empid | empname | salary   | job       | dno  | dname       | location  |
++-------+---------+----------+-----------+------+-------------+-----------+
+|   101 | arjun   | 50000.00 | President |   40 | Research    | Chennai   |
+|   102 | Smith   | 45000.00 | Manager   |   10 | Development | Hyderabad |
+|   103 | Ford    | 40000.00 | Manager   |   20 | Testing     | Banglore  |
+|   104 | Tom     | 30000.00 | Developer |   10 | Development | Hyderabad |
+|   105 | Scott   | 35000.00 | Developer |   10 | Development | Hyderabad |
+|   106 | Jerry   | 25000.00 | Tester    |   20 | Testing     | Banglore  |
+|   107 | Ravi    | 22000.00 | Tester    |   20 | Testing     | Banglore  |
+|   108 | Adam    | 47000.00 | Analyst   |   30 | Operation   | Mumbai    |
+|   109 | javeed  | 47000.00 | manager   |   30 | Operation   | Mumbai    |
+|   110 | anil    |     NULL | NULL      | NULL | NULL        | NULL      |
++-------+---------+----------+-----------+------+-------------+-----------+
+10 rows in set (0.00 sec)
+
+mysql> select empid,empname,salary,job,d.dno,dname,location from employees e RIGHT OUTER JOIN dept d on (d.dno=e.dno);
++-------+---------+----------+-----------+-----+-------------+-----------+
+| empid | empname | salary   | job       | dno | dname       | location  |
++-------+---------+----------+-----------+-----+-------------+-----------+
+|   102 | Smith   | 45000.00 | Manager   |  10 | Development | Hyderabad |
+|   104 | Tom     | 30000.00 | Developer |  10 | Development | Hyderabad |
+|   105 | Scott   | 35000.00 | Developer |  10 | Development | Hyderabad |
+|   103 | Ford    | 40000.00 | Manager   |  20 | Testing     | Banglore  |
+|   106 | Jerry   | 25000.00 | Tester    |  20 | Testing     | Banglore  |
+|   107 | Ravi    | 22000.00 | Tester    |  20 | Testing     | Banglore  |
+|   108 | Adam    | 47000.00 | Analyst   |  30 | Operation   | Mumbai    |
+|   109 | javeed  | 47000.00 | manager   |  30 | Operation   | Mumbai    |
+|   101 | arjun   | 50000.00 | President |  40 | Research    | Chennai   |
+|  NULL | NULL    |     NULL | NULL      |  50 | Sales       | Delhi     |
++-------+---------+----------+-----------+-----+-------------+-----------+
+10 rows in set (0.00 sec)
+
+mysql> select empid,empname,salary,job,d.dno,dname,location from employees e RIGHT OUTER JOIN dept d on (d.dno=e.dno)
+    -> union
+    -> select empid,empname,salary,job,d.dno,dname,location from employees e LEFT OUTER JOIN dept d on (d.dno=e.dno);
++-------+---------+----------+-----------+------+-------------+-----------+
+| empid | empname | salary   | job       | dno  | dname       | location  |
++-------+---------+----------+-----------+------+-------------+-----------+
+|   102 | Smith   | 45000.00 | Manager   |   10 | Development | Hyderabad |
+|   104 | Tom     | 30000.00 | Developer |   10 | Development | Hyderabad |
+|   105 | Scott   | 35000.00 | Developer |   10 | Development | Hyderabad |
+|   103 | Ford    | 40000.00 | Manager   |   20 | Testing     | Banglore  |
+|   106 | Jerry   | 25000.00 | Tester    |   20 | Testing     | Banglore  |
+|   107 | Ravi    | 22000.00 | Tester    |   20 | Testing     | Banglore  |
+|   108 | Adam    | 47000.00 | Analyst   |   30 | Operation   | Mumbai    |
+|   109 | javeed  | 47000.00 | manager   |   30 | Operation   | Mumbai    |
+|   101 | arjun   | 50000.00 | President |   40 | Research    | Chennai   |
+|  NULL | NULL    |     NULL | NULL      |   50 | Sales       | Delhi     |
+|   110 | anil    |     NULL | NULL      | NULL | NULL        | NULL      |
++-------+---------+----------+-----------+------+-------------+-----------+
+11 rows in set (0.00 sec)
+
+mysql>
+
+

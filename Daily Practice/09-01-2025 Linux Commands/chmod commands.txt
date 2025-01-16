@@ -1,0 +1,770 @@
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands
+$ mkdir arjun
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands
+$ cd arjun
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ touch sample.txt
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ cat > sample.txt
+This command will help to update the whole content with new content
+
+
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ cat sample.txt
+This command will help to update the whole content with new content
+
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ cat >> sample.txt
+to append the new data we use  >>
+
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ cat sample.txt
+This command will help to update the whole content with new content
+
+to append the new data we use  >>
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ cat > file2
+This is file 2
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ cat sample.txt file2.txt
+This command will help to update the whole content with new content
+
+to append the new data we use  >>
+cat: file2.txt: No such file or directory
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ rm file2
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ cat > file2.txt
+This is file 2
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ cat sample.txt file2.txt
+This command will help to update the whole content with new content
+
+to append the new data we use  >>
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ cat file2.txt
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ cat > file2.txt
+Thhis is file2
+
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ cat sample.txt file2.txt
+This command will help to update the whole content with new content
+
+to append the new data we use  >>
+Thhis is file2
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ cat sample.txt file2.txt | less
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ mv sample.txt file1.txt
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ ls
+file1.txt  file2.txt
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ cat file1.txt file2.txt > file3.txt
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ cat file3.txt
+This command will help to update the whole content with new content
+
+to append the new data we use  >>
+Thhis is file2
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ rm -i file3.txt
+rm: remove regular file 'file3.txt'? no
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ cat file3.txt
+This command will help to update the whole content with new content
+
+to append the new data we use  >>
+Thhis is file2
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ rm -f file3.txt
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ ls
+file1.txt  file2.txt
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ cp file1.txt file3.txt
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ ls
+file1.txt  file2.txt  file3.txt
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ cat file3.txt
+This command will help to update the whole content with new content
+
+to append the new data we use  >>
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ ps
+      PID    PPID    PGID     WINPID   TTY         UID    STIME COMMAND
+      415       1     415      20484  ?         197609 11:02:50 /usr/bin/mintty
+      416     415     416       9236  pty0      197609 11:02:50 /usr/bin/bash
+      748     416     748      18424  pty0      197609 14:49:20 /usr/bin/ps
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ ps -f
+     UID     PID    PPID  TTY        STIME COMMAND
+   boyap     415       1 ?        11:02:50 /usr/bin/mintty
+   boyap     752     416 pty0     14:50:28 /usr/bin/ps
+   boyap     416     415 pty0     11:02:50 /usr/bin/bash
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ date
+Thu Jan  9 14:54:20 IST 2025
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ date "+%T"
+14:54:35
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ data "+%d %h"
+bash: data: command not found
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ date "+%d %h"
+09 Jan
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ date "+%H %M"
+14 55
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ date "+%d %m"
+09 01
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ date "+%H %M %R"
+14 56 14:56
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ date "+%R"
+14:56
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ lp file3.txt
+bash: lp: command not found
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ nl file3.txt
+     1  This command will help to update the whole content with new content
+
+     2  to append the new data we use  >>
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ cat > file3.txt
+Hello
+Friends
+i am arjun
+from  Addanki
+Thank you
+
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ cat file3.txt
+Hello
+Friends
+i am arjun
+from  Addanki
+Thank you
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ nl file3.txt
+     1  Hello
+     2  Friends
+     3  i am arjun
+     4  from  Addanki
+     5  Thank you
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ nl -v101 file3.txt
+   101  Hello
+   102  Friends
+   103  i am arjun
+   104  from  Addanki
+   105  Thank you
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ nl -v101 -i2 file3.txt
+   101  Hello
+   103  Friends
+   105  i am arjun
+   107  from  Addanki
+   109  Thank you
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ nl -w2 -v101 -i5 file3.txt
+101     Hello
+106     Friends
+111     i am arjun
+116     from  Addanki
+121     Thank you
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ tty
+/dev/pty0
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ cat -n file3.txt
+     1  Hello
+     2  Friends
+     3  i am arjun
+     4  from  Addanki
+     5  Thank you
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ cat -v file3.txt
+Hello
+Friends
+i am arjun
+from  Addanki
+Thank you
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ cat >> marks.txt
+100
+900
+200
+800
+300
+700
+400
+600
+500
+
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ cat marks.txt
+100
+900
+200
+800
+300
+700
+400
+600
+500
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ car -E marks.txt
+bash: car: command not found
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ cat -E marks.txt
+100$
+900$
+200$
+800$
+300$
+700$
+400$
+600$
+500$
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ cat file3.txt marks.txt
+Hello
+Friends
+i am arjun
+from  Addanki
+Thank you
+100
+900
+200
+800
+300
+700
+400
+600
+500
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ cd ..
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands
+$ cd .
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands
+$ cd ..
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training
+$ cd Linux commnds
+bash: cd: too many arguments
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training
+$ cd Linux commands
+bash: cd: too many arguments
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training
+$ cd Linux_commands
+bash: cd: Linux_commands: No such file or directory
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training
+$ cd
+Cloned data/               NMS_Daily Activity/
+Links.txt                  Pulled materials from git/
+Linux commands/            Pushing data/
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training
+$ cd
+Cloned data/               NMS_Daily Activity/
+Links.txt                  Pulled materials from git/
+Linux commands/            Pushing data/
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training
+$ cd
+Cloned data/               NMS_Daily Activity/
+Links.txt                  Pulled materials from git/
+Linux commands/            Pushing data/
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training
+$ cd
+Cloned data/               NMS_Daily Activity/
+Links.txt                  Pulled materials from git/
+Linux commands/            Pushing data/
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training
+$ cd
+Cloned data/               NMS_Daily Activity/
+Links.txt                  Pulled materials from git/
+Linux commands/            Pushing data/
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training
+$ cd
+Cloned data/               NMS_Daily Activity/
+Links.txt                  Pulled materials from git/
+Linux commands/            Pushing data/
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training
+$ cd
+Cloned data/               NMS_Daily Activity/
+Links.txt                  Pulled materials from git/
+Linux commands/            Pushing data/
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training
+$ cd Linux commands/
+bash: cd: too many arguments
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training
+$ ls
+'Cloned data'/  'Linux commands'/      'Pulled materials from git'/
+ Links.txt      'NMS_Daily Activity'/  'Pushing data'/
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training
+$ cd 'Linux commands'/
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands
+$ cd arjun/
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ cat employee.txt
+cat: employee.txt: No such file or directory
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ cat > employee.txt
+101  king     50000
+102  tom      45000
+103  smith    30000
+104  ford     25000
+105  arjun    20000
+106  malli     5000
+
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ head employee.txt
+101  king     50000
+102  tom      45000
+103  smith    30000
+104  ford     25000
+105  arjun    20000
+106  malli     5000
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ head -3 employee.txt
+101  king     50000
+102  tom      45000
+103  smith    30000
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ tail -4 employee.txt
+103  smith    30000
+104  ford     25000
+105  arjun    20000
+106  malli     5000
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ tail +4 employee.txt
+104  ford     25000
+105  arjun    20000
+106  malli     5000
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ ls -l
+total 5
+-rw-r--r-- 1 boyap 197609 120 Jan  9 15:09 employee.txt
+-rw-r--r-- 1 boyap 197609 103 Jan  9 14:29 file1.txt
+-rw-r--r-- 1 boyap 197609  15 Jan  9 14:35 file2.txt
+-rw-r--r-- 1 boyap 197609  50 Jan  9 14:58 file3.txt
+-rw-r--r-- 1 boyap 197609  36 Jan  9 15:02 marks.txt
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ cd ..
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands
+$ ls -l
+total 4
+drwxr-xr-x 1 boyap 197609 0 Jan  9 15:07 arjun/
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands
+$ cd arjun/
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ cmp file1.txt file2.txt
+file1.txt file2.txt differ: char 3, line 1
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ comm file1.txt file2.txt
+        Thhis is file2
+This command will help to update the whole content with new content
+comm: file 1 is not in sorted order
+
+to append the new data we use  >>
+comm: input is not in sorted order
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ cat file3.txt
+Hello
+Friends
+i am arjun
+from  Addanki
+Thank you
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ tr "[a-z]" "[A-Z]" < file3.txt
+HELLO
+FRIENDS
+I AM ARJUN
+FROM  ADDANKI
+THANK YOU
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ ls -l employee.txt
+-rw-r--r-- 1 boyap 197609 120 Jan  9 15:09 employee.txt
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ chmod a+x employee.txt
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ ls -l employee.txt
+-rw-r--r-- 1 boyap 197609 120 Jan  9 15:09 employee.txt
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ chmod 744 employee.txt
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ ls -l employee.txt
+-rw-r--r-- 1 boyap 197609 120 Jan  9 15:09 employee.txt
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ help chmod
+bash: help: no help topics match `chmod'.  Try `help help' or `man -k chmod' or `info chmod'.
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ cut -c1-4 employee.txt
+101
+102
+103
+104
+105
+106
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ cut -c5-10 employee.txt
+ king
+ tom
+ smith
+ ford
+ arjun
+ malli
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ cut -c12-18 employee.txt
+   5000
+   4500
+   3000
+   2500
+   2000
+    500
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ cut -c1-3,12-19
+
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ cut -c1-3,12-19 employee.txt
+101   50000
+102   45000
+103   30000
+104   25000
+105   20000
+106    5000
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ cat employee.txt
+101  king     50000
+102  tom      45000
+103  smith    30000
+104  ford     25000
+105  arjun    20000
+106  malli     5000
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ cat >> dept.txt
+10 development
+20 testing
+30 HR
+40 operatiom
+50 research
+
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ paste employee.txt dept.txt
+101  king     50000     10 development
+102  tom      45000     20 testing
+103  smith    30000     30 HR
+104  ford     25000     40 operatiom
+105  arjun    20000     5esearch
+106  malli     5000
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ cat dept.txt
+10 development
+20 testing
+30 HR
+40 operatiom
+5esearch
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ paste employee.txt -d'|' dept.txt
+101  king     50000|10 development
+102  tom      45000|20 testing
+103  smith    30000|30 HR
+104  ford     25000|40 operatiom
+105  arjun    20000|5esearch
+106  malli     5000|
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ sort e
+sort: cannot read: e: No such file or directory
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ sort employee.txt
+101  king     50000
+102  tom      45000
+103  smith    30000
+104  ford     25000
+105  arjun    20000
+106  malli     5000
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ sort -r employee.txt
+106  malli     5000
+105  arjun    20000
+104  ford     25000
+103  smith    30000
+102  tom      45000
+101  king     50000
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ cat >> items.txt
+hello
+friends
+thanks
+
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ cat i
+cat: i: No such file or directory
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ cat i employee.txt items.txt
+cat: i: No such file or directory
+101  king     50000
+102  tom      45000
+103  smith    30000
+104  ford     25000
+105  arjun    20000
+106  malli     5000
+hello
+friends
+thanks
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ cat items.txt
+hello
+friends
+thanks
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ cat >> items.txt
+friends
+FRIENDS
+from hyderabad
+hello
+HELLO
+i am javeed
+thank you
+THANK YOU
+
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ sort items.txt
+friends
+FRIENDS
+HELLO
+THANK YOU
+friends
+from hyderabad
+hello
+hello
+i am javeed
+thank you
+thanks
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ sort -f items.txt
+friends
+FRIENDS
+friends
+from hyderabad
+HELLO
+hello
+hello
+i am javeed
+THANK YOU
+thank you
+thanks
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ find employee.txt
+employee.txt
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ find *.txt
+dept.txt
+employee.txt
+file1.txt
+file2.txt
+file3.txt
+items.txt
+marks.txt
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ find /d/ *.txt
+find: ‘/d/’: No such file or directory
+dept.txt
+employee.txt
+file1.txt
+file2.txt
+file3.txt
+items.txt
+marks.txt
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ find /OneDrive/ *.txt
+find: ‘/OneDrive/’: No such file or directory
+dept.txt
+employee.txt
+file1.txt
+file2.txt
+file3.txt
+items.txt
+marks.txt
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ find /C/OneDrive/ *.txt
+find: ‘/C/OneDrive/’: No such file or directory
+dept.txt
+employee.txt
+file1.txt
+file2.txt
+file3.txt
+items.txt
+marks.txt
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ cat employee.txt
+101  king     50000
+102  tom      45000
+103  smith    30000
+104  ford     25000
+105  arjun    20000
+106  malli     5000
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ ^C
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ cat >> employee.txt
+101  king     50000
+102  tom      45000
+103  smith    30000
+
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ cat employee.txt
+101  king     50000
+102  tom      45000
+103  smith    30000
+104  ford     25000
+105  arjun    20000
+106  malli     5000
+101  king     50000
+102  tom      45000
+103  smith    30000
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ grep 'king' employee.txt
+101  king     50000
+101  king     50000
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ grep -n 'king' employee.txt
+1:101  king     50000
+7:101  king     50000
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ grep -w 'king' employee.txt
+101  king     50000
+101  king     50000
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$

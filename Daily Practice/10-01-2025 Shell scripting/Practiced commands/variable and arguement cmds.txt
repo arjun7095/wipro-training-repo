@@ -1,0 +1,123 @@
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ vi variables.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh -x variables.sh
++ name=Arjun
++ salary=500000
++ height=6.2
++ flag=true
++ echo 'name: Arjun'
+name: Arjun
++ echo 'salary: 500000'
+salary: 500000
++ echo 'height: 6.2'
+height: 6.2
++ echo 'flag: true'
+flag: true
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh  variables.sh
+name: Arjun
+salary: 500000
+height: 6.2
+flag: true
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ vi variables.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh -x variables.sh
++ name=Arjun
++ salary=500000
++ height=6.2
++ flag=true
++ echo 'name: Arjun'
+name: Arjun
++ echo 'salary: 500000'
+salary: 500000
++ echo 'height: 6.2'
+height: 6.2
++ echo 'flag: true'
+flag: true
+++ date
++ echo 'Today'\''s date is Fri Jan 10 10:52:37 IST 2025'
+Today's date is Fri Jan 10 10:52:37 IST 2025
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh  variables.sh
+name: Arjun
+salary: 500000
+height: 6.2
+flag: true
+Today's date is Fri Jan 10 10:52:45 IST 2025
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ vi variables.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh -x variables.sh
++ name=Arjun
++ salary=500000
++ height=6.2
++ flag=true
++ echo 'name: Arjun'
+name: Arjun
++ echo 'salary: 500000'
+salary: 500000
++ echo 'height: 6.2'
+height: 6.2
++ echo 'flag: true'
+flag: true
+++ date
++ echo 'Today'\''s date is Fri Jan 10 10:55:43 IST 2025'
+Today's date is Fri Jan 10 10:55:43 IST 2025
+++ pwd
++ var1='/c/Users/boyap/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting'
++ echo 'My present woking directory is /c/Users/boyap/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting'
+My present woking directory is /c/Users/boyap/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh  variables.sh
+name: Arjun
+salary: 500000
+height: 6.2
+flag: true
+Today's date is Fri Jan 10 10:55:51 IST 2025
+My present woking directory is /c/Users/boyap/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ vi args.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh -x args.sh "arjun" 462000
++ echo arjun
+arjun
++ echo 462000
+462000
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh  args.sh "arjun" 462000
+arjun
+462000
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ vi args.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh -x args.sh "arjun" 462000
++ echo '1st positional param/arg arjun'
+1st positional param/arg arjun
++ echo ''\''2nd positional param/arg 462000'
+'2nd positional param/arg 462000
++ echo 'No. of args 2'
+No. of args 2
++ echo 'set of params arjun 462000'
+set of params arjun 462000
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh  args.sh "arjun" 462000
+1st positional param/arg arjun
+'2nd positional param/arg 462000
+No. of args 2
+set of params arjun 462000

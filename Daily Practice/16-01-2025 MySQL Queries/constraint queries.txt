@@ -1,0 +1,191 @@
+mysql> use nms_db
+Database changed
+mysql> CREATE TABLE  DEPT
+    -> (
+    -> DNO  Integer(3)   ,
+    -> DNAME  Varchar(20) ,
+    -> LOCATION  Varchar(30)
+    ->
+    -> );
+Query OK, 0 rows affected, 1 warning (0.02 sec)
+
+mysql> alter table dept add constraint dept_dno_pk PRIMARY KEY;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> alter table dept add constraint dept_dno_pk PRIMARY KEY(dno);
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table dept modify dname varchar(30) default 'NOT GIVEN';
+
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table dept add check(Location in ('Hyderabad','Mumbai','Banglore','Chennai','Delhi'));
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> INSERT INTO DEPT Values(10,'Development','Hyderabad')  ,
+    ->     (20,'Testing','Banglore') ,
+    ->    (30,'Operation','Mumbai') ,
+    -> (40,'Research','Chennai') ,
+    -> (50,'Sales','Delhi') ;
+Query OK, 5 rows affected (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> select * from dept;
++-----+-------------+-----------+
+| DNO | dname       | LOCATION  |
++-----+-------------+-----------+
+|  10 | Development | Hyderabad |
+|  20 | Testing     | Banglore  |
+|  30 | Operation   | Mumbai    |
+|  40 | Research    | Chennai   |
+|  50 | Sales       | Delhi     |
++-----+-------------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> select * from employees;
++-------+---------+----------+------+-----------+------------+------+
+| empid | empname | salary   | comm | job       | DOJ        | mid  |
++-------+---------+----------+------+-----------+------------+------+
+|   101 | arjun   | 50000.00 | NULL | President | 2020-12-01 | NULL |
+|   102 | Smith   | 45000.00 | NULL | Manager   | 2021-09-23 |  101 |
+|   103 | Ford    | 40000.00 | NULL | Manager   | 2022-04-15 |  101 |
+|   104 | Tom     | 30000.00 | 1500 | Developer | 2023-10-18 |  102 |
+|   105 | Scott   | 35000.00 | 1000 | Developer | 2023-12-25 |  102 |
+|   106 | Jerry   | 25000.00 | 3000 | Tester    | 2025-01-13 |  103 |
+|   107 | Ravi    | 22000.00 | 4000 | Tester    | 2025-01-12 |  103 |
+|   108 | Adam    | 47000.00 | NULL | Analyst   | 2024-01-01 |  101 |
+|   109 | javeed  | 47000.00 | NULL | manager   | 2024-01-01 |  101 |
+|   110 | anil    |     NULL | NULL | NULL      | 2024-01-19 | NULL |
++-------+---------+----------+------+-----------+------------+------+
+10 rows in set (0.00 sec)
+
+mysql> alter table employees Add(DNO integer reference dept(DNO));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'reference dept(DNO))' at line 1
+mysql> alter table employees Add(DNO integer references dept(DNO));
+Query OK, 10 rows affected (0.04 sec)
+Records: 10  Duplicates: 0  Warnings: 0
+
+mysql> desc dept;
++----------+-------------+------+-----+-----------+-------+
+| Field    | Type        | Null | Key | Default   | Extra |
++----------+-------------+------+-----+-----------+-------+
+| DNO      | int         | NO   | PRI | NULL      |       |
+| dname    | varchar(30) | YES  |     | NOT GIVEN |       |
+| LOCATION | varchar(30) | YES  |     | NULL      |       |
++----------+-------------+------+-----+-----------+-------+
+3 rows in set (0.00 sec)
+
+mysql> dept employees;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'dept employees' at line 1
+mysql> desc employees;
++---------+--------------+------+-----+---------+-------+
+| Field   | Type         | Null | Key | Default | Extra |
++---------+--------------+------+-----+---------+-------+
+| empid   | int          | NO   | PRI | NULL    |       |
+| empname | varchar(20)  | YES  |     | NULL    |       |
+| salary  | double(7,2)  | YES  |     | NULL    |       |
+| comm    | decimal(7,0) | YES  |     | NULL    |       |
+| job     | varchar(30)  | YES  |     | NULL    |       |
+| DOJ     | date         | YES  |     | NULL    |       |
+| mid     | int          | YES  |     | NULL    |       |
+| DNO     | int          | YES  | MUL | NULL    |       |
++---------+--------------+------+-----+---------+-------+
+8 rows in set (0.00 sec)
+
+mysql> select * from employees;
++-------+---------+----------+------+-----------+------------+------+------+
+| empid | empname | salary   | comm | job       | DOJ        | mid  | DNO  |
++-------+---------+----------+------+-----------+------------+------+------+
+|   101 | arjun   | 50000.00 | NULL | President | 2020-12-01 | NULL | NULL |
+|   102 | Smith   | 45000.00 | NULL | Manager   | 2021-09-23 |  101 | NULL |
+|   103 | Ford    | 40000.00 | NULL | Manager   | 2022-04-15 |  101 | NULL |
+|   104 | Tom     | 30000.00 | 1500 | Developer | 2023-10-18 |  102 | NULL |
+|   105 | Scott   | 35000.00 | 1000 | Developer | 2023-12-25 |  102 | NULL |
+|   106 | Jerry   | 25000.00 | 3000 | Tester    | 2025-01-13 |  103 | NULL |
+|   107 | Ravi    | 22000.00 | 4000 | Tester    | 2025-01-12 |  103 | NULL |
+|   108 | Adam    | 47000.00 | NULL | Analyst   | 2024-01-01 |  101 | NULL |
+|   109 | javeed  | 47000.00 | NULL | manager   | 2024-01-01 |  101 | NULL |
+|   110 | anil    |     NULL | NULL | NULL      | 2024-01-19 | NULL | NULL |
++-------+---------+----------+------+-----------+------------+------+------+
+10 rows in set (0.00 sec)
+
+mysql> update employees set dno=10 where empid in (102,104,105);
+Query OK, 3 rows affected (0.00 sec)
+Rows matched: 3  Changed: 3  Warnings: 0
+
+mysql> select * from employees;
++-------+---------+----------+------+-----------+------------+------+------+
+| empid | empname | salary   | comm | job       | DOJ        | mid  | DNO  |
++-------+---------+----------+------+-----------+------------+------+------+
+|   101 | arjun   | 50000.00 | NULL | President | 2020-12-01 | NULL | NULL |
+|   102 | Smith   | 45000.00 | NULL | Manager   | 2021-09-23 |  101 |   10 |
+|   103 | Ford    | 40000.00 | NULL | Manager   | 2022-04-15 |  101 | NULL |
+|   104 | Tom     | 30000.00 | 1500 | Developer | 2023-10-18 |  102 |   10 |
+|   105 | Scott   | 35000.00 | 1000 | Developer | 2023-12-25 |  102 |   10 |
+|   106 | Jerry   | 25000.00 | 3000 | Tester    | 2025-01-13 |  103 | NULL |
+|   107 | Ravi    | 22000.00 | 4000 | Tester    | 2025-01-12 |  103 | NULL |
+|   108 | Adam    | 47000.00 | NULL | Analyst   | 2024-01-01 |  101 | NULL |
+|   109 | javeed  | 47000.00 | NULL | manager   | 2024-01-01 |  101 | NULL |
+|   110 | anil    |     NULL | NULL | NULL      | 2024-01-19 | NULL | NULL |
++-------+---------+----------+------+-----------+------------+------+------+
+10 rows in set (0.00 sec)
+
+mysql> update employees set dno=20 where empid in (103,106,107);
+Query OK, 3 rows affected (0.01 sec)
+Rows matched: 3  Changed: 3  Warnings: 0
+
+mysql> select * from employees;
++-------+---------+----------+------+-----------+------------+------+------+
+| empid | empname | salary   | comm | job       | DOJ        | mid  | DNO  |
++-------+---------+----------+------+-----------+------------+------+------+
+|   101 | arjun   | 50000.00 | NULL | President | 2020-12-01 | NULL | NULL |
+|   102 | Smith   | 45000.00 | NULL | Manager   | 2021-09-23 |  101 |   10 |
+|   103 | Ford    | 40000.00 | NULL | Manager   | 2022-04-15 |  101 |   20 |
+|   104 | Tom     | 30000.00 | 1500 | Developer | 2023-10-18 |  102 |   10 |
+|   105 | Scott   | 35000.00 | 1000 | Developer | 2023-12-25 |  102 |   10 |
+|   106 | Jerry   | 25000.00 | 3000 | Tester    | 2025-01-13 |  103 |   20 |
+|   107 | Ravi    | 22000.00 | 4000 | Tester    | 2025-01-12 |  103 |   20 |
+|   108 | Adam    | 47000.00 | NULL | Analyst   | 2024-01-01 |  101 | NULL |
+|   109 | javeed  | 47000.00 | NULL | manager   | 2024-01-01 |  101 | NULL |
+|   110 | anil    |     NULL | NULL | NULL      | 2024-01-19 | NULL | NULL |
++-------+---------+----------+------+-----------+------------+------+------+
+10 rows in set (0.00 sec)
+
+mysql> update employees set dno=30 where empid in (108,109);
+Query OK, 2 rows affected (0.00 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> update employees set dno=40 where empid in (101);
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from employees;
++-------+---------+----------+------+-----------+------------+------+------+
+| empid | empname | salary   | comm | job       | DOJ        | mid  | DNO  |
++-------+---------+----------+------+-----------+------------+------+------+
+|   101 | arjun   | 50000.00 | NULL | President | 2020-12-01 | NULL |   40 |
+|   102 | Smith   | 45000.00 | NULL | Manager   | 2021-09-23 |  101 |   10 |
+|   103 | Ford    | 40000.00 | NULL | Manager   | 2022-04-15 |  101 |   20 |
+|   104 | Tom     | 30000.00 | 1500 | Developer | 2023-10-18 |  102 |   10 |
+|   105 | Scott   | 35000.00 | 1000 | Developer | 2023-12-25 |  102 |   10 |
+|   106 | Jerry   | 25000.00 | 3000 | Tester    | 2025-01-13 |  103 |   20 |
+|   107 | Ravi    | 22000.00 | 4000 | Tester    | 2025-01-12 |  103 |   20 |
+|   108 | Adam    | 47000.00 | NULL | Analyst   | 2024-01-01 |  101 |   30 |
+|   109 | javeed  | 47000.00 | NULL | manager   | 2024-01-01 |  101 |   30 |
+|   110 | anil    |     NULL | NULL | NULL      | 2024-01-19 | NULL | NULL |
++-------+---------+----------+------+-----------+------------+------+------+
+10 rows in set (0.00 sec)
+
+mysql> select * from dept;
++-----+-------------+-----------+
+| DNO | dname       | LOCATION  |
++-----+-------------+-----------+
+|  10 | Development | Hyderabad |
+|  20 | Testing     | Banglore  |
+|  30 | Operation   | Mumbai    |
+|  40 | Research    | Chennai   |
+|  50 | Sales       | Delhi     |
++-----+-------------+-----------+
+5 rows in set (0.00 sec)

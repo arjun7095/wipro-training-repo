@@ -1,0 +1,61 @@
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ vi add_func.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh add_func.sh
+add_func.sh: line 5: + : syntax error: operand expected (error token is "+ ")
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ vi add_func.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh add_func.sh
+add_func.sh: line 5: +  : syntax error: operand expected (error token is "+  ")
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ vi add_func.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh add_func.sh
+add_func.sh: line 5: +  : syntax error: operand expected (error token is "+  ")
+result:
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh add_func.sh 10 30
+result: 40
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ vi func_call.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh f
+for_loop.sh   for_loop2.sh  func_call.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh func_call.sh
+func_call.sh: line 4: showdate: command not found
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ vi func_call.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh func_call.sh
+Fri Jan 10 15:10:47 IST 2025
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ vi func_return.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh func_return.sh
+Add function
+return is Add function
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ vi func_return.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ vi func_return.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh func_return.sh
+Add function
+99

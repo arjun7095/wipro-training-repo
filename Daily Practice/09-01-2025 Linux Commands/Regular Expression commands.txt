@@ -1,0 +1,234 @@
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ cat >> data.txt
+# Lowercase letters
+a
+b
+c
+d
+
+# Uppercase letters
+A
+B
+C
+D
+
+# Any alphabet (Upper or Lower case)
+a
+Z
+m
+Q
+
+# Digits (0-9)
+1
+5
+9
+
+# Three uppercase letters
+TOM
+RAJ
+WIN
+GET
+
+# One uppercase letter followed by four lowercase letters
+Azeez
+Rajan
+Kamla
+Javed
+
+# Special characters ($, #, @)
+$
+#
+@
+
+# Strings starting with capital 'S'
+Satish
+Sonu
+Sham
+
+# Strings ending with lowercase 'h'
+ashish
+harish
+
+# Smile or smile
+Smile
+smile
+
+# Valid phone numbers starting with 6, 7, 8, or 9
+9876543210
+7894561230
+6789012345
+9998887776
+
+# Invalid phone numbers for testing
+1234567890
+0456789123
+
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ grep [a-z] d
+data.txt  dept.txt
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ grep [a-z] data.txt
+# Lowercase letters
+a
+b
+c
+d
+# Uppercase letters
+# Any alphabet (Upper or Lower case)
+a
+m
+# Digits (0-9)
+# Three uppercase letters
+# One uppercase letter followed by four lowercase letters
+Azeez
+Rajan
+Kamla
+Javed
+# Special characters ($, #, @)
+# Strings starting with capital 'S'
+Satish
+Sonu
+Sham
+# Strings ending with lowercase 'h'
+ashish
+harish
+# Smile or smile
+Smile
+smile
+# Valid phone numbers starting with 6, 7, 8, or 9
+# Invalid phone numbers for testing
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ grep [A-Z] data.txt
+# Lowercase letters
+# Uppercase letters
+A
+B
+C
+D
+# Any alphabet (Upper or Lower case)
+Z
+Q
+# Digits (0-9)
+# Three uppercase letters
+TOM
+RAJ
+WIN
+GET
+# One uppercase letter followed by four lowercase letters
+Azeez
+Rajan
+Kamla
+Javed
+# Special characters ($, #, @)
+# Strings starting with capital 'S'
+Satish
+Sonu
+Sham
+# Strings ending with lowercase 'h'
+# Smile or smile
+Smile
+# Valid phone numbers starting with 6, 7, 8, or 9
+# Invalid phone numbers for testing
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ grep [a-bA-Z] data.txt
+# Lowercase letters
+a
+b
+# Uppercase letters
+A
+B
+C
+D
+# Any alphabet (Upper or Lower case)
+a
+Z
+Q
+# Digits (0-9)
+# Three uppercase letters
+TOM
+RAJ
+WIN
+GET
+# One uppercase letter followed by four lowercase letters
+Azeez
+Rajan
+Kamla
+Javed
+# Special characters ($, #, @)
+# Strings starting with capital 'S'
+Satish
+Sonu
+Sham
+# Strings ending with lowercase 'h'
+ashish
+harish
+# Smile or smile
+Smile
+# Valid phone numbers starting with 6, 7, 8, or 9
+# Invalid phone numbers for testing
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ grep [A-Z]{3} data.txt
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ grep [A-Z][a-z]{3} data.txt
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ grep [0-9] data.txt
+# Digits (0-9)
+1
+5
+9
+# Valid phone numbers starting with 6, 7, 8, or 9
+9876543210
+7894561230
+6789012345
+9998887776
+1234567890
+0456789123
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ grep [$#@] data.txt
+# Digits (0-9)
+# Special characters ($, #, @)
+@
+9876543210
+7894561230
+6789012345
+1234567890
+0456789123
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ grep ^S data.txt
+Satish
+Sonu
+Sham
+Smile
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ grep h$ data.txt
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ grep [Ss]mile data.txt
+# Smile or smile
+Smile
+smile
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ grep [6-9][0-9]{9} data.txt
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$ grep [6-9][0-9]9 data.txt
+7894561230
+6789012345
+9998887776
+1234567890
+0456789123
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/arjun
+$

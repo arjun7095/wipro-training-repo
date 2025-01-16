@@ -1,0 +1,61 @@
+mysql> use nms_db;
+Database changed
+mysql> select * from products;
++-----+---------------+----------+------------+-----------+
+| pid | product_name  | price    | dop        | brand     |
++-----+---------------+----------+------------+-----------+
+|   1 | mobile        | 15000.00 | 2025-01-15 | IPhone    |
+|   2 | laptop        | 25000.00 | 2025-01-15 | Dell      |
+|   3 | Computer Book |  2000.00 | 2025-01-15 | BlackBook |
+|   4 | Toys          |  1500.00 | 2025-01-15 | KidsZee   |
++-----+---------------+----------+------------+-----------+
+4 rows in set (0.00 sec)
+
+mysql> start transaction;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> delete from products;
+Query OK, 4 rows affected (0.00 sec)
+
+mysql> select * from products;
+Empty set (0.00 sec)
+
+mysql> rollback;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select * from products;
++-----+---------------+----------+------------+-----------+
+| pid | product_name  | price    | dop        | brand     |
++-----+---------------+----------+------------+-----------+
+|   1 | mobile        | 15000.00 | 2025-01-15 | IPhone    |
+|   2 | laptop        | 25000.00 | 2025-01-15 | Dell      |
+|   3 | Computer Book |  2000.00 | 2025-01-15 | BlackBook |
+|   4 | Toys          |  1500.00 | 2025-01-15 | KidsZee   |
++-----+---------------+----------+------------+-----------+
+4 rows in set (0.00 sec)
+
+mysql> start transaction;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> insert into products values(5,"printer",10000,current_date,"HP jet");
+
+Query OK, 1 row affected (0.00 sec)
+
+mysql> update products set price=3000 where pid=3;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from products;
++-----+---------------+----------+------------+-----------+
+| pid | product_name  | price    | dop        | brand     |
++-----+---------------+----------+------------+-----------+
+|   1 | mobile        | 15000.00 | 2025-01-15 | IPhone    |
+|   2 | laptop        | 25000.00 | 2025-01-15 | Dell      |
+|   3 | Computer Book |  3000.00 | 2025-01-15 | BlackBook |
+|   4 | Toys          |  1500.00 | 2025-01-15 | KidsZee   |
+|   5 | printer       | 10000.00 | 2025-01-15 | HP jet    |
++-----+---------------+----------+------------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> commit;
+Query OK, 0 rows affected (0.01 sec)

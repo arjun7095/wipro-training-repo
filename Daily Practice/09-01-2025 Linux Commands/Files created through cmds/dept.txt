@@ -1,0 +1,5 @@
+10 development
+20 testing
+30 HR
+40 operatiom
+5[0 research

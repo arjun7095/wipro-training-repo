@@ -1,0 +1,34 @@
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ vi arrays.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh arrays.sh
+king tom smith Arjun
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ vi arrays.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh arrays.sh
+king tom smith Arjun
+king
+tom
+smith
+Arjun
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ vi arrays.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh arrays.sh
+king tom smith Arjun
+king
+tom
+smith
+Arjun
+king
+tom
+smith
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ vi arrays.sh

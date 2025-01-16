@@ -1,0 +1,231 @@
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ vi employee.txt
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ ls
+args.sh  demo.sh  employee.txt  hello.sh  math.sh  variables.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ grep 'king' employee.txt && echo 'Employee found'
+101  king   50000
+Employee found
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ grep 'anand' employee.txt && echo 'Employee found'
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ grep 'anand' employee.txt || echo 'Employee found'
+Employee found
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ vi conditional_statements.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh conditional_statements.sh
+Enter your age
+25
+conditional_statements.sh: line 6: syntax error near unexpected token `else'
+conditional_statements.sh: line 6: `else'
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ vi conditional_statements.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh conditional_statements.sh
+Enter your age
+25
+conditional_statements.sh: line 4: [25: command not found
+you are not eligible for vote
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ vi conditional_statements.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh conditional_statements.sh
+Enter your age
+25
+conditional_statements.sh: line 4: [: missing `]'
+you are not eligible for vote
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ vi conditional_statements.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh conditional_statements.sh
+Enter your age
+25
+conditional_statements.sh: line 4: [25: command not found
+you are not eligible for vote
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ vi conditional_statements.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh conditional_statements.sh
+Enter your age
+25
+You are eligible for vote
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh -x conditional_statements.sh
++ echo 'Enter your age'
+Enter your age
++ read age
+25
++ '[' 25 -gt 18 ']'
++ echo 'You are eligible for vote'
+You are eligible for vote
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ mv conditional_statements.sh ifelse.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ ls
+args.sh  demo.sh  employee.txt  hello.sh  ifelse.sh  math.sh  variables.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ vi if_elif.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh if_elif.sh
+enter a value
+50
+enter b value
+40
+enter c value
+60
+a is greater than b
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh -x if_elif.sh
++ echo 'enter a value'
+enter a value
++ read a
+50
++ echo 'enter b value'
+enter b value
++ read b
+40
++ echo 'enter c value'
+enter c value
++ read c
+60
++ '[' 50 -gt 40 ']'
++ echo 'a is greater than b'
+a is greater than b
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ vi strings.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh strings.sh
+strings.sh: line 5: syntax error: unexpected end of file
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ vi strings.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh strings.sh
+Arjun is not null
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ vi strings.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh strings.sh
+Arjun is not null
+String null is not null
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ vi strings.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh strings.sh
+Arjun is not null
+String  is not null
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ vi strings.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh strings.sh
+Arjun is not null
+String  is not null
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ vi strings.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh strings.sh
+Arjun is not null
+string  is null
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ vi strings.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh strings.sh
+Arjun is not null
+string  is null
+
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ vi strings.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh strings.sh
+Arjun is not null
+string  is null
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ vi case.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh case.sh
+Enter your choice
+1
+total 10
+-rw-r--r-- 1 boyap 197609 120 Jan 10 11:02 args.sh
+-rw-r--r-- 1 boyap 197609 160 Jan 10 12:31 case.sh
+-rw-r--r-- 1 boyap 197609  49 Jan 10 10:07 demo.sh
+-rw-r--r-- 1 boyap 197609 114 Jan 10 11:07 employee.txt
+-rw-r--r-- 1 boyap 197609 137 Jan 10 10:30 hello.sh
+-rw-r--r-- 1 boyap 197609 241 Jan 10 12:01 if_elif.sh
+-rw-r--r-- 1 boyap 197609 137 Jan 10 11:54 ifelse.sh
+-rw-r--r-- 1 boyap 197609 119 Jan 10 10:42 math.sh
+-rw-r--r-- 1 boyap 197609 165 Jan 10 12:23 strings.sh
+-rw-r--r-- 1 boyap 197609 221 Jan 10 10:55 variables.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh case.sh
+Enter your choice
+2
+     UID     PID    PPID  TTY        STIME COMMAND
+   boyap     108     107 pty0     09:29:35 /usr/bin/bash
+   boyap     509     108 pty0     12:33:23 /usr/bin/sh
+   boyap     510     509 pty0     12:33:28 /usr/bin/ps
+   boyap     107       1 ?        09:29:35 /usr/bin/mintty
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh case.sh
+Enter your choice
+3
+Fri Jan 10 12:33:34 IST 2025
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh case.sh
+Enter your choice
+4
+boyap
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh case.sh
+Enter your choice
+5
+/c/Users/boyap/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh case.sh
+Enter your choice
+6
+Invalid option, try again

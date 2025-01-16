@@ -1,0 +1,139 @@
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ touch hello.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ ls
+hello.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ cat >> hello.sh
+echo "Hello world"
+
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ ls -l hello.sh
+-rw-r--r-- 1 boyap 197609 19 Jan 10 09:39 hello.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ chmod 744 hello.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ ls -l hello.sh
+-rw-r--r-- 1 boyap 197609 19 Jan 10 09:39 hello.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ chmod u+x hello.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ ls -l hello.sh
+-rw-r--r-- 1 boyap 197609 19 Jan 10 09:39 hello.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ bash hello.sh
+Hello world
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ vi demo.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ vi demo.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ bash demo.sh
+Welocome friends
+I am Arjun
+Fri Jan 10 10:07:37 IST 2025
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ bash -x demo.sh
++ echo 'Welocome friends '
+Welocome friends
++ echo 'I am Arjun'
+I am Arjun
++ date
+Fri Jan 10 10:08:53 IST 2025
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh -x demo.sh
++ echo 'Welocome friends '
+Welocome friends
++ echo 'I am Arjun'
+I am Arjun
++ date
+Fri Jan 10 10:10:08 IST 2025
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh  demo.sh
+Welocome friends
+I am Arjun
+Fri Jan 10 10:10:22 IST 2025
+
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ echo $PATH
+/c/Users/boyap/bin:/mingw64/bin:/usr/local/bin:/usr/bin:/bin:/mingw64/bin:/usr/bin:/c/Users/boyap/bin:/c/Python312/Scripts:/c/Python312:/c/windows/system32:/c/windows:/c/windows/System32/Wbem:/c/windows/System32/WindowsPowerShell/v1.0:/c/windows/System32/OpenSSH:/cmd:/c/ProgramData/chocolatey/bin:/c/Program Files (x86)/nodejs:/c/Users/boyap/AppData/Local/Programs/Python/Python313/Scripts:/c/Users/boyap/AppData/Local/Programs/Python/Python313:/c/Users/boyap/AppData/Local/Microsoft/WindowsApps:/c/Users/boyap/AppData/Roaming/npm:/c/Users/boyap/AppData/Local/Programs/Microsoft VS Code/bin:/usr/bin/vendor_perl:/usr/bin/core_perl
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ set $UNAME='Arjun'
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ echo $UNAME
+
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ vi hello.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh hello.sh
+Hello world
+Enter your name
+Arjun
+Enter your salary
+1000000
+Name:Arjun
+Salary: 1000000
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh -x hello.sh
++ echo 'Hello world'
+Hello world
++ echo 'Enter your name'
+Enter your name
++ read name
+Arjun
++ echo 'Enter your salary'
+Enter your salary
++ read salary
+10000000
++ echo Name:Arjun
+Name:Arjun
++ echo 'Salary: 10000000'
+Salary: 10000000
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ vi math.sh
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh -x math.sh
++ echo 'Enter num1 value'
+Enter num1 value
++ read num1
+10
++ echo 'Enter num2 value'
+Enter num2 value
++ read num2
+20
+++ expr 10 + 20
++ res=30
++ echo 'Result is 30'
+Result is 30
+
+boyap@arjun MINGW64 ~/OneDrive/Desktop/NMS Training/Linux commands/Shell scripting
+$ sh  math.sh
+Enter num1 value
+10
+Enter num2 value
+20
+Result is 30
+
